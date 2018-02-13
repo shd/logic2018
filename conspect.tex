@@ -1,0 +1,56 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{stmaryrd}
+%\usepackage{bnf}
+%\usepackage[UglyObsolete,tight,heads=LaTeX] {diagrams}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\usepackage{proof}
+\newcommand{\gq}[1]{\texttt{<<}#1\texttt{>>}}
+\newcommand{\ogq}[1]{\overline{\texttt{<<}#1\texttt{>>}}}
+\begin{document}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[section]
+\newtheorem*{example}{Пример}
+%\theoremstyle{theorem}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{axiom}{Аксиома}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+
+\newcommand{\s}[1]{\texttt{#1}}
+\newcommand{\xl}{$\lambda$}
+\newcommand{\+}{\lambda}
+\newcommand{\bredmath}{\ \longrightarrow_\beta\ }
+\newcommand{\bred}{$\bredmath$}
+\newcommand{\mbred}{$\ \longrightarrow\!\!\!\!\rightarrow_\beta\ $}
+\newcommand{\lid}[1]{\textit{#1}}
+\newcommand{\concat}{\hat{\ \ }}
+
+\def\ra{\rightarrow}
+
+\def\from#1{\par \parbox{0.7\textwidth}{\par \hfill\raggedleft \it #1}} 
+
+\newenvironment{epigraph}% 
+{\begin{list}{}{\setlength{\leftmargin}{0.3\textwidth}}\item[]}% 
+{\end{list}} 
+
+\include{lection1}
+%\include{lection2}
+%\include{lection4}
+%\include{lection5}
+%\include{proof-a-eq-a}
+%\include{lection7}
+%\include{lection9}
+%\include{lection10}
+%\include{lection11}
+%\include{lection-ordinals}
+%\include{lection13}
+\include{lit}
+%\include{questions}
+
+\end{document}

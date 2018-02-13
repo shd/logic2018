@@ -1,0 +1,86 @@
+\section{Общая топология}
+
+Мы начинаем курс немного издалека: от некоторых базовых тем общей топологии.
+С одной стороны, эти знания пригодятся нам дальше в курсе, с другой --- есть 
+надежда, что они настроят слушателей курса на правильный лад.
+
+\begin{definition} \emph{Топологическим пространством} мы назовём упорядоченную
+пару множеств $\langle X, \Omega \rangle$, где $\Omega \subseteq {\mathcal{P}}(X)$,
+отвечающую следующим трём свойствам:
+
+\begin{enumerate}
+\item Какое бы ни было семейство множеств $\{A_\alpha\}$, где $A_\alpha \in \Omega$, выполнено
+$\cup_\alpha\{A_\alpha\} \in X$
+\item Какое бы ни было конечное семейство множеств $\{A_1, \dots, A_n\}$, где $A_i \in \Omega$,
+выполнено $A_1 \cap A_2 \cap \dots \cap A_n \in Omega$
+\item $\varnothing \in \Omega$, $X \in \Omega$
+\end{enumerate}
+\end{definition}
+
+\begin{definition} Пусть дано топологическое пространство $\langle X, \Omega \rangle$.
+Тогда любое множество $A \in \Omega$ назовём \emph{открытым}. Если же $X \setminus A \in \Omega$, 
+то такое множество назовём \emph{замкнутым}.
+\end{definition}
+
+\begin{theorem} Следующие объекты являются топологическими пространствами:
+\begin{enumerate}
+\item Топология стрелки: $\langle \mathbb{R}, \{(x,+\infty) | x \in {\-\infty}\cup\mathbb{R}\cup{+\infty}\} \rangle$
+\item Дискретная топология на множестве $X$: $\langle X, {\mathcal{P}}(X) \rangle$
+\item Топология Зарисского на множестве $X$: $\langle X, \{ A \in {\mathcal{P}}(X) | (X \setminus A) ~\textrm{--- конечно}~\} \rangle$
+\end{enumerate}
+\end{theorem}
+
+\begin{definition} \emph{Базой} топологического пространства $\langle X, \Omega \rangle$ назовём
+любое такое семейство множеств $\mathcal{B}$, что каждое открытое множество представляется
+объединением некоторого подмножества $\mathcal{B}$. Или, в формальной записи,
+$\Omega = \{\cup S | S \subseteq B\}$.
+Также будем говорить, что данная база $\mathcal{B}$ \emph{задаёт} топологическое 
+пространство $\langle X, \Omega \rangle$.
+\end{definition}
+
+\begin{theorem} Классическая топология Евклидова пространства $\mathbb{R}$:
+    Множество $$\mathcal{B} = \{(a,b)|a,b\in \mathbb{R}\}$$ является базой Евклидова пространства.
+\end{theorem}
+
+\begin{definition} Топологическое пространство $\langle X, \Omega \rangle$ назовём 
+связным, если единственные одновременно открытые и замкнутые множества в нём --- $\varnothing$ и $X$.
+\end{definition}
+
+\begin{theorem} Топологическое пространство $\langle X, \Omega \rangle$ связно тогда и только тогда, 
+когда в нём нет двух непустых открытых множеств $A$ и $B$, что $A \cup B = X$ и $A \cap B = \varnothing$.
+\end{theorem}
+
+\begin{definition} Назовём частичным порядком $(\sqsubseteq)$ на множестве $X$ любое 
+рефлексивное, транзитивное и антисимметричное отношение на нём.
+\end{definition}
+
+\begin{definition} Рассмотрим множество $X$ с заданным на нём частичным порядком $\sqsubseteq$.
+Рассмотрим множество $\mathcal{B}_\sqsubseteq = \{ \{ t \in X | x \sqsubseteq t \}| x \in X\}$.
+Тогда топологическое пространство $X_\sqsubseteq$, задаваемое базой топологии $\mathcal{B}_\sqsubseteq$,
+мы назовём \emph{топологией частичного порядка} $(\sqsubseteq)$ на $X$.
+\end{definition}
+
+\begin{theorem} При любом выборе $X$ и $(\sqsubseteq)$ $X_\sqsubseteq$ является топологическим пространством.
+\end{theorem}
+
+\begin{definition} Пусть задано топологическое пространство $\langle X, \Omega \rangle$, и пусть
+задано множество $A \subseteq X$. Тогда рассмотрим $\Omega_A = \{ S \cap A | S \in \Omega \}$.
+Будем называть топологическое пространство $\langle A, \Omega_A$ пространством с топологией,
+индуцированной пространством $\langle X, \Omega \rangle$.
+\end{definition}
+
+\begin{theorem} При любом выборе топологического пространства $\langle X, \Omega \rangle$ и 
+$A$ (подмножества $X$) пространство с индуцированной топологией 
+$\langle A, \Omega_A \rangle$ является топологическим пространством.
+\end{theorem}
+
+\begin{theorem} Пусть задано топологическое пространство $\langle X, \Omega \rangle$, и пусть
+$A \subseteq X$. Тогда множество $A$ называется связным, если оно связно как пространство
+с индуцированной пространством $\langle X, \Omega \rangle$ топологией.
+\end{theorem}
+
+\begin{theorem} Рассмотрим ациклический граф $G$ с множеством вершин $V$. Построим по нему
+отношение: положим, что $x \sqsubseteq y$, если имеется путь из $x$ в $y$.
+Тогда граф слабо связен тогда и только тогда, когда связно соответствующее топологическое 
+пространство частичного порядка. 
+\end{theorem}

@@ -1,0 +1,62 @@
+\documentclass[10pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{stmaryrd}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\usepackage{proof}
+\newcommand{\gq}[1]{\texttt{<<}#1\texttt{>>}}
+\newcommand{\ogq}[1]{\overline{\texttt{<<}#1\texttt{>>}}}
+\begin{document}
+
+\begin{center}{\Large\textsc{\textbf{Теоретические (``малые'') домашние задания}}}\\
+             \it Математическая логика, ИТМО, М3234-М3239, весна 2018 года\end{center}
+
+\section*{Домашнее задание №1}
+
+Докажите при любых подстановках метапеременных $\alpha$, $\beta$ и $\gamma$:
+\begin{enumerate}
+\item $\vdash\alpha\&\beta\rightarrow\beta\&\alpha$
+\item $\vdash\alpha \rightarrow \neg\neg \alpha$
+\item $\vdash\alpha\&(\beta\vee\gamma) \rightarrow (\alpha\vee\beta)\&(\alpha\vee\gamma)$
+\item $\vdash\neg(\alpha\&\beta) \rightarrow \neg\alpha\&\neg\beta$
+\item $\vdash(\alpha\rightarrow\beta)\rightarrow(\neg\beta\rightarrow\neg\alpha)$
+\end{enumerate}
+
+\section*{Домашнее задание №2}
+
+\begin{enumerate}
+\item Докажите при любых значениях метапеременных $\alpha$, $\beta$:
+\begin{enumerate}
+\item $\alpha,\beta \vdash \alpha\&\beta$
+\item $\neg\alpha,\beta \vdash \neg(\alpha\&\beta)$
+\item $\alpha,\neg\beta \vdash \neg(\alpha\&\beta)$
+\item $\neg\alpha,\neg\beta \vdash \neg(\alpha\&\beta)$
+\item $\alpha,\beta \vdash \alpha\vee\beta$
+\item $\neg\alpha,\beta \vdash \alpha\vee\beta$
+\item $\alpha,\neg\beta \vdash \alpha\vee\beta$
+\item $\neg\alpha,\neg\beta \vdash \neg(\alpha\vee\beta)$
+\item $\alpha,\beta \vdash \alpha\rightarrow\beta$
+\item $\alpha,\neg\beta \vdash \neg(\alpha\rightarrow\beta)$
+\item $\neg\alpha,\beta \vdash \alpha\rightarrow\beta$
+\item $\neg\alpha,\neg\beta \vdash \alpha\rightarrow\beta$
+\item $\neg\alpha \vdash \neg\alpha$
+\item $\alpha \vdash \neg\neg\alpha$
+\end{enumerate}
+
+\item Докажите, что при любых значениях метапеременной $\alpha$ 
+справедливо $\vdash \alpha\vee\neg\alpha$
+
+\item Докажите, что при любых списках формул $\Gamma$ и $\Delta$ и при любых
+значениях метапеременных $\gamma$,$\delta$,$\zeta$
+если $\Gamma \vdash \gamma$, $\Delta \vdash \delta$ и $\gamma,\delta\vdash\zeta$,
+то $\Gamma,\Delta\vdash\zeta$
+
+\item Докажите, что если $\Gamma, \rho \vdash \alpha$ и $\Gamma, \neg\rho \vdash \alpha$,
+то $\Gamma \vdash \alpha$
+\end{enumerate}
+
+\end{document}

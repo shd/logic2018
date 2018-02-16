@@ -1,0 +1,435 @@
+\section{Теорема о дедукции}
+
+Соглашение об обозначениях. Будем обозначать буквами 
+$\Gamma, \Delta, \Sigma, \Pi$ списки формул (возможно, пустые).
+
+\begin{definition}{Вывод из допущений.}
+Пусть $\Gamma$ -- некоторый список высказываний, а $\alpha$ --- 
+некоторое высказывание. 
+Тогда мы будем говорить, что высказывание $\alpha$ \emph{выводимо} из $\Gamma$ 
+(и записывать это как $\Gamma \vdash \alpha$), если существует такая 
+последовательность высказываний $\alpha_1, \alpha_2, \dots \alpha_{n-1}, \alpha$
+(называемая \emph{выводом} $\alpha$ из $\Gamma$), 
+что каждое из высказываний $\alpha_i$ --- это 
+\begin{itemize}
+\item либо аксиома,
+\vspace{-0.2cm}
+\item либо получается по правилу Modus Ponens из предыдущих высказываний, 
+\vspace{-0.2cm}
+\item либо --- высказывание из списка $\Gamma$.
+\end{itemize}
+Элементы $\Gamma$ мы будем называть \emph{допущениями}. Также эти элементы
+называют предположениями или гипотезами. 
+\end{definition}
+
+В свете данного определения можно заметить, что доказательство --- это
+вывод из пустого списка допущений. 
+
+\begin{theorem}\label{deduction_theorem}{Теорема о дедукции.}
+Утверждение $\Gamma \vdash \alpha \rightarrow \beta$ справедливо тогда и 
+только тогда, когда справедливо, что $\Gamma, \alpha \vdash \beta$.
+\end{theorem}
+
+Для доказательства рассмотрим следующую лемму:
+
+\begin{lemma}
+$\vdash \alpha \rightarrow \alpha$
+\end{lemma}
+
+\begin{proof}\ 
+
+\begin{tabular}{lll}
+(1) & $\alpha \rightarrow (\alpha \rightarrow \alpha)$&Сх. акс. 1\\
+(2) & $(\alpha \rightarrow (\alpha \rightarrow \alpha)) \rightarrow 
+  (\alpha \rightarrow ((\alpha \rightarrow \alpha) \rightarrow \alpha)) \rightarrow
+  (\alpha \rightarrow \alpha)$&Сх. акс. 2\\
+(3) & $(\alpha \rightarrow ((\alpha \rightarrow \alpha) \rightarrow \alpha)) \rightarrow
+  (\alpha \rightarrow \alpha)$&M.P. 1,2\\
+(4) & $(\alpha \rightarrow ((\alpha \rightarrow \alpha) \rightarrow \alpha))$ & Сх. акс. 1\\
+(5) & $\alpha \rightarrow \alpha$ & M.P. 4,3\\
+\end{tabular}\ 
+
+\end{proof}
+
+\begin{proof}[Доказательство теоремы \ref{deduction_theorem}]
+
+Сперва докажем прямое следствие. Для этого нам 
+достаточно научиться по любому выводу $\alpha \rightarrow \beta$ из $\Gamma$ строить 
+вывод $\beta$ из $\Gamma, \alpha$. Возьмем вывод 
+формулы $\alpha \rightarrow \beta$, то есть некоторую последовательность 
+формул $\delta_1 \dots \delta_{m-1}; \alpha \rightarrow \beta$.
+Добавив к выводу 2 формулы, получаем требуемый вывод:
+
+\vspace{0.2cm}
+\begin{tabular}{lll}
+$(1)$ & $\delta_1$\\
+& \dots\\
+$(m-1)$ & $\delta_{m-1}$\\
+$(m)$ & $\alpha \rightarrow \beta$\\
+$(m+1)$ & $\alpha$ & <<Свежедобавленная>> аксиома \\
+$(m+2)$ & $\beta$ & M.P. $m$, $m+1$\\
+\end{tabular}
+\vspace{0.2cm}
+
+Теперь докажем обратное. Нам необходимо построить вывод утверждения 
+$\Gamma \vdash \alpha \rightarrow \beta$ по имеющемуся выводу 
+$\delta_1 \dots \delta_{m-1}, \beta$.
+Мы поступим так: сперва набросаем план вывода -- разместим по тексту 
+<<ключевые>> формулы, которые потом дополним до полноценного вывода 
+промежуточными формулами. 
+
+План вывода будет такой:
+
+\begin{tabular}{ll}
+$(1)$ & $\Gamma \vdash \alpha \rightarrow \delta_1$\\
+\dots\\
+$(m-1)$ & $\Gamma \vdash \alpha \rightarrow \delta_{m-1}$\\
+$(m)$ & $\Gamma \vdash \alpha \rightarrow \beta$
+\end{tabular}
+
+Теперь надо дополнить его до полноценного вывода. Будем рассматривать
+формулы подряд и перед каждой формулой добавлять некоторое количество
+формул, обосновывающих соответствующий шаг доказательства. 
+Рассмотрим формулу номер $i$. Возможны следующие варианты:
+
+\begin{enumerate}
+\item $\delta_i$ --- это аксиома или предположение, входящее в $\Gamma$. 
+Тогда перед этой формулой вставим 
+формулы $\delta_i$ и $\delta_i \rightarrow (\alpha \rightarrow \delta_i)$, 
+и окажется, что $i$-я формула выводится из предыдущих двух формул
+путем применения правила Modus Ponens.
+
+\item $\delta_i$ совпадает с $\alpha$. Тогда мы вставим перед 
+ней 4 первые формулы из леммы, и $\delta_i \rightarrow \alpha$ будет получаться
+по правилу Modus Ponens.
+
+\item $\delta_i$ выводится по правилу Modus Ponens из каких-то других
+утверждений $\delta_j$ и $\delta_k$ (при этом 
+$\delta_k \equiv \delta_j \rightarrow \delta_i$), где $j < i$ и $k < i$.
+Покажем, что $\alpha \rightarrow \delta_i$ тоже может быть выведена
+из утверждений $\alpha \rightarrow \delta_j$ и 
+$\alpha \rightarrow (\delta_j \rightarrow \delta_i)$.
+
+Для этого добавим два высказывания:
+
+\begin{tabular}{lll}
+$(\alpha \rightarrow \delta_j) \rightarrow ((\alpha \rightarrow (\delta_j \rightarrow \delta_i)) \rightarrow (\alpha \rightarrow \delta_i))$ & Сх. акс. 2\\
+$((\alpha \rightarrow (\delta_j \rightarrow \delta_i)) \rightarrow (\alpha \rightarrow \delta_i))$ & M.P. из $j$ и $i-6$\\
+\end{tabular}
+
+\end{enumerate}
+\end{proof}
+
+По аналогии мы можем рассмотреть отношение \emph{следования}.
+Будем говорить, что высказывание $\alpha$ следует из высказываний $\Gamma$,
+если при любой оценке пропозициональных переменных, входящих в высказывания 
+$\Gamma$ и $\alpha$, на которых все высказывания из $\Gamma$ истинны, 
+$\alpha$ также истинно.
+Записывать, что $\alpha$ следует из $\Gamma$, будем так: $\Gamma \models \alpha$.
+
+\section{Теорема о полноте исчисления высказываний}
+
+\begin{definition} 
+Введем обозначение. Пусть $\alpha$ --- это некоторое высказывание, а $x$ --- некоторое
+истинностное значение. Тогда обозначим за $_{[x]}\alpha$ высказывание
+$\alpha$, если $x$ --- истина, и $\neg (\alpha)$, если $x$ --- ложь.
+Также, если формула $\alpha$ --- это формула с $n$ пропозициональными переменными
+$P_1 \dots P_n$, и $x_1 \dots x_n$ --- некоторые истинностные значения,
+то за $\llbracket \alpha \rrbracket^{P_1 := x_1, \dots P_n := x_n}$ обозначим значение 
+формулы $\alpha$ при подстановке значений $x_1 \dots x_n$ вместо переменных $P_1 \dots P_n$.
+\end{definition}
+
+\begin{lemma}\label{prefix_transposition}
+Если $\Gamma, \Sigma \vdash \alpha$, то $\Gamma, \Delta, \Sigma \vdash \alpha$. 
+Если $\Gamma, \Delta, \Sigma, \Pi \vdash \alpha$, то $\Gamma, \Sigma, \Delta, \Pi \vdash \alpha$. 
+\end{lemma}
+
+\begin{proof}Упражнение\end{proof}
+
+\begin{lemma}
+Если справедливы 3 утверждения: $\Gamma \vdash \gamma$, $\Delta \vdash \delta$ и
+$\gamma, \delta \vdash \alpha$, то справедливо и $\Gamma, \Delta \vdash \alpha$
+\end{lemma}
+
+\begin{proof}
+%Поскольку $\gamma, \delta \vdash \alpha$, то по теореме о дедукции найдется 
+%доказательство $\gamma \rightarrow \delta \rightarrow \alpha$.
+
+Мы получим требуемый вывод, просто последовательно соединив все три исходных 
+вывода. Первые два вывода будут (очевидно) корретными при допущениях $\Gamma$ 
+и $\Delta$. В третьем же выводе могут использоваться высказывания $\gamma$ и $\delta$,
+отсутствующие в предположениях.
+Но поскольку эти высказывания доказаны в первых двух частях вывода, мы будем
+иметь полное право их упоминать --- на тех же основаниях, на которых они указаны
+в конце соответствующих доказательств.
+
+%Следующая последовательность высказываний является выводом $\alpha$ из
+%$\Gamma$ и $\Delta$:
+%
+%\begin{tabular}{lll}
+%$(1) \dots (m)$ & $\gamma_1 \dots \gamma_{m-1}, \gamma$ & Вывод $\Gamma \vdash \gamma$\\
+%$(m+1) \dots (n)$ & $\delta_1 \dots \delta_{n-m-1}, \delta$ & Вывод $\Delta \vdash \delta$\\
+%$(n+1) \dots (s)$ & $\sigma_1 \dots \sigma_{s-n-1}, \gamma \rightarrow \delta \rightarrow \alpha$ & Вывод $\gamma, \delta \vdash \alpha$\\
+%$(s+1)$ & $\delta \rightarrow \alpha$ & M.P. $m$, $s$\\
+%$(s+2)$ & $\alpha$ & M.P. $n$, $s+1$\\
+%\end{tabular}
+
+\end{proof}
+
+Возьмем некоторую связку исчисления высказываний, например конъюнкцию: $A \& B$.
+Построим для нее таблицу истинности. По каждой строчке построим утверждение,
+в котором отрицания появляются там, где в таблице истинности находится \emph{Л}:
+
+\begin{tabular}{cccc}\label{valuation_formula}
+$A$ & $B$ & $A \& B$ & утверждение\\
+\hline
+Л & Л & Л & $\neg A, \neg B \vdash \neg (A \& B)$\\
+Л & И & Л & $\neg A, B \vdash \neg (A \& B)$\\
+И & Л & Л & $A, \neg B \vdash \neg (A \& B)$\\
+И & И & И & $A, B \vdash A \& B$
+\end{tabular}
+
+\begin{lemma}
+Каждое из построенных по таблицам истинности утверждений доказуемо.
+\end{lemma}
+\begin{proof} Упражнение.
+\end{proof}
+
+\begin{lemma}[Правило контрапозиции]\label{contraposition}Каковы бы ни были формулы $\alpha$ и $\beta$, справедливо, что 
+$\vdash (\alpha \rightarrow \beta) \rightarrow (\neg\beta \rightarrow \neg\alpha)$
+\end{lemma}
+
+\begin{proof}
+Сперва докажем, что $\alpha \rightarrow \beta, \neg\beta \vdash \neg\alpha$.
+
+\begin{tabular}{lll}
+(1) & $(\alpha \rightarrow \beta) \rightarrow (\alpha \rightarrow \neg\beta) \rightarrow \neg\alpha$ & Сх. акс. 9\\
+(2) & $\alpha \rightarrow \beta$ & Допущение\\
+(3) & $(\alpha \rightarrow \neg\beta) \rightarrow \neg\alpha$ & M.P. 2,1\\
+(4) & $\neg\beta \rightarrow (\alpha \rightarrow \neg\beta)$ & Сх. акс. 1\\
+(5) & $\neg\beta$ & Допущение\\
+(6) & $\alpha \rightarrow \neg\beta$ & M.P. 5,4\\
+(7) & $\neg\alpha$ & M.P. 6,3
+\end{tabular}
+
+%\begin{tabular}{lll}
+%(1) & $\alpha \rightarrow \neg\neg\beta, \alpha \vdash \alpha \rightarrow \neg\neg\beta$
+%\end{tabular}
+
+Тогда, применив 2 раза Теорему о дедукции, получим вывод требуемого утверждения.
+\end{proof}
+
+\begin{lemma}{Правило исключенного третьего.}\label{excluded_third} Какова бы ни была формула $\alpha$,
+$\vdash \alpha\vee\neg\alpha$
+\end{lemma}
+\begin{proof}
+
+Доказательство проведем в 3 этапа.
+\begin{enumerate}
+\item Для начала покажем $\vdash \neg(\alpha\vee\neg\alpha) \rightarrow \neg\alpha$:
+
+\begin{tabular}{lll}
+$(1)$ & $\alpha \rightarrow \alpha \vee \neg\alpha$ & Сх. акс. 6\\
+%    & доказательство из леммы \ref{contraposition} &\\
+$(2)\dots(n+1)$ & $\gamma_1,\dots\gamma_{n-1},(\alpha \rightarrow \alpha \vee \neg\alpha) \rightarrow (\neg(\alpha\vee\neg\alpha) \rightarrow \neg\alpha)$ & Д-во из леммы \ref{contraposition}\\
+$(n+2)$ & $\neg(\alpha\vee\neg\alpha) \rightarrow \neg\alpha$ & M.P. 1,$n+1$
+\end{tabular}
+
+\item
+Затем докажем $\vdash \neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha$:
+
+\begin{tabular}{lll}
+$(1)$ & $\neg\alpha \rightarrow \alpha \vee \neg\alpha$ & Сх. акс. 7\\
+%    & доказательство из леммы \ref{contraposition} & \\
+$(2)\dots(k+1)$ & $\delta_1, \dots \delta_{k-1}, (\neg\alpha \rightarrow \alpha\vee\neg\alpha) \rightarrow (\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha)$ & Д-во из леммы \ref{contraposition}\\
+$(k+2)$ & $\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha$ & M.P. 1,$k+1$\\
+\end{tabular}
+
+%Применив теорему о дедукции, получим: $\neg(\alpha\vee\neg\alpha) \vdash \neg\neg\alpha$. Далее,
+%в данном допущении, построим следующий вывод:
+%
+%\begin{tabular}{lll}
+%$(1)$ & $\neg\neg\alpha \rightarrow \alpha$ & Сх. акс. 10\\
+%$(2)\dots(l+1)$ & $\epsilon_1, \dots \epsilon_{l-1}, \neg\neg\alpha $ & По теореме о дедукции \\
+%$(l+2)$ & $\alpha $ & M.P. $l+1$,1
+%\end{tabular}
+%
+%И по теореме о дедукции из данного вывода мы можем получить доказательство
+%утверждения $\vdash \neg(\alpha\vee\neg\alpha) \rightarrow \alpha$.
+
+\item
+Теперь докажем все вместе:
+
+\begin{tabular}{lll}
+%(1) & $\alpha \rightarrow \alpha \vee \neg\alpha$ & Сх. акс. 5\\
+%    & доказательство из леммы \ref{contraposition} & 
+%(2) & $(\alpha \rightarrow \alpha \vee \neg\alpha) \rightarrow (\neg(\alpha\vee\neg\alpha) \rightarrow \neg\alpha)$ & по лемме \ref{contraposition}\\
+%    & \dots сюда вставим доказательство из пункта 1 \dots\\
+(1) & $\neg(\alpha\vee\neg\alpha) \rightarrow \neg\alpha$ & по пункту 1\\
+%(4) & $\neg\alpha \rightarrow \alpha \vee \neg\alpha$ & Сх. акс. 6\\
+%    & доказательство из леммы \ref{contraposition} & \\
+%(5) & $(\neg\alpha \rightarrow \alpha\vee\neg\alpha) \rightarrow (\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha) & по лемме \ref{contraposition}\\
+%(2) & $\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha$ \\
+%(7) & $(\neg\neg\alpha \rightarrow \alpha) \rightarrow \neg(\alpha\vee\neg\alpha) \rightarrow (\neg\neg\alpha \rightarrow \alpha)$ & Сх. акс. 1\\
+%(8) & $(\neg\neg\alpha \rightarrow \alpha) & Сх. акс. 10\\
+%(9) & $\neg(\alpha\vee\neg\alpha) \rightarrow (\neg\neg\alpha \rightarrow \alpha)$ & M.P. 8,7\\
+%(10)& $(\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha) \rightarrow (\neg(\alpha\vee\neg\alpha) \rightarrow (\neg\neg\alpha \rightarrow \alpha)) \rightarrow \neg(\alpha\vee\neg\alpha \rightarrow \alpha)$
+%(11) & $(\neg(\alpha\vee\neg\alpha) \rightarrow (\neg\neg\alpha \rightarrow \alpha)) \rightarrow \neg(\alpha\vee\neg\alpha \rightarrow \alpha)$ M.P. 6,10\\
+%(12) & $\neg(\alpha\vee\neg\alpha \rightarrow \alpha)$
+%    & по обратной т. к т. о дедукции из (6) можно получить &\\
+%    & $\neg(\alpha\vee\neg\alpha) \vdash \neg\neg\alhpa$ &\\
+%    & а затем, применив акс. (10), modus ponens и т. о дедукции: &\\
+%    & \dots сюда вставим доказательство из пункта 2 dots\\
+(2) & $\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha$& по пункту 2\\
+(3) & $(\neg(\alpha\vee\neg\alpha) \rightarrow \neg\alpha) \rightarrow (\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha) \rightarrow (\neg\neg(\alpha\vee\neg\alpha))$ & Сх. акс. 9\\
+(4) & $(\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha) \rightarrow \neg\neg(\alpha\vee\neg\alpha)$ & M.P. 1,3\\
+(5) & $\neg\neg(\alpha\vee\neg\alpha)$ & M.P. 2,4\\
+(6) & $\neg\neg(\alpha\vee\neg\alpha) \rightarrow (\alpha\vee\neg\alpha)$ & Сх. акс. 10\\
+(7) & $\alpha\vee\neg\alpha$ & M.P. 5,6
+\end{tabular}
+\end{enumerate}
+
+\end{proof}
+
+\begin{lemma}{Об исключении допущения.}
+Пусть справедливо $\Gamma, \rho \vdash \alpha$ и $\Gamma, \neg \rho \vdash \alpha$.
+Тогда также справедливо $\Gamma \vdash \alpha$.
+\end{lemma}
+
+\begin{proof}
+
+Применив теорему о дедукции к условиям теоремы получим следующее:
+
+\begin{tabular}{l}
+$\Gamma \vdash \rho \rightarrow \alpha$\\
+$\Gamma \vdash \neg \rho \rightarrow \alpha$
+\end{tabular}
+
+Тогда следующий вывод покажет $\Gamma \vdash \alpha$:
+
+\begin{tabular}{lll}
+$(1) \dots (p)$ & $\gamma_1, \dots \gamma_{p-1}, \rho \rightarrow \alpha$ & Вывод $\Gamma \vdash \rho \rightarrow \alpha$\\
+$(p+1) \dots (q)$ & $\delta_1, \dots \delta_{q-p-1}, \neg \rho \rightarrow \alpha$ & Вывод $\Gamma \vdash \neg \rho \rightarrow \alpha$\\
+$(q+1) \dots (r)$ & $\epsilon_1, \dots \epsilon_{r-q-1}, \rho \vee \neg \rho$ & Лемма \ref{excluded_third}\\
+$(r+1)$ & $(\rho \rightarrow \alpha) \rightarrow (\neg \rho \rightarrow \alpha) \rightarrow (\rho \vee \neg \rho) \rightarrow \alpha$ & Сх. аксиом 8\\
+$(r+2)$ & $(\neg \rho \rightarrow \alpha) \rightarrow (\rho \vee \neg \rho \rightarrow \alpha)$ & M.P. $1$, $r+1$\\
+$(r+3)$ & $\rho \vee \neg \rho \rightarrow \alpha$ & M.P. $p$, $r+2$\\
+$(r+4)$ & $\alpha$ & M.P. $r$, $r+3$
+\end{tabular}
+
+\end{proof}
+
+\begin{theorem}{О полноте исчисления высказываний.}
+Пусть справедливо $\models \alpha$. Тогда также справедливо, что $\vdash \alpha$.
+\end{theorem}
+
+\begin{proof}
+Для доказательства теоремы мы докажем чуть более сильное утверждение --- что 
+для любого $k$ от $0$ до $n$ и любой
+оценки переменных $x_1, \dots x_k$ справедливо 
+$_{[x_1]} P_1, \dots _{[x_k]} P_k \vdash \alpha$.
+Нетрудно заметить, что утверждение теоремы непосредственно следует из данного 
+утверждения для $k=0$. 
+Доказательство будет вестись индукцией по $n-k$.
+
+База. Пусть $n-k=0$, то есть $k=n$. 
+$\models \alpha$ означает, что при любой оценке 
+$x_1, \dots x_n$ пропозициональных переменных $P_1, \dots P_n$
+справедливо $\alpha [P_1 := x_1, \dots P_n := x_n] = \texttt{И}$.
+Возьмем некоторую оценку переменных
+$x_1, \dots x_n$. Тогда, по лемме \ref{valuation_formula},
+$_{[x_1]} P_1, \dots _{[x_{n}]} P_{n} \vdash {_{\alpha [P_1 := x_1, \dots P_n := x_n]} \alpha}$
+то есть $_{[x_1]} P_1, \dots _{[x_{n}]} P_{n} \vdash \alpha$.
+
+Переход. Пусть утверждение уже доказано для некоторого $n-k > 0$, покажем его
+для $n-k+1$ (то есть доказано для $k < n$, покажем его для $k-1$).
+Возьмем некоторую оценку переменных $x_1, \dots x_{k-1}$.
+По предположению, $_{[x_1]} P_1, \dots _{[x_{k}]} P_{k} \vdash \alpha$, то есть
+
+\begin{tabular}{rl}
+$_{[x_1]} P_1, \dots _{[x_{k-1}]} P_{k-1}, \neg P_{k}$ & $\vdash \alpha$\\
+$_{[x_1]} P_1, \dots _{[x_{k-1}]} P_{k-1}, P_{k}$ & $\vdash \alpha$
+\end{tabular}
+
+Тогда по лемме об исключении допущения, справедливо 
+$_{[x_1]} P_1, \dots _{[x_{k-1}]} P_{k-1} \vdash \alpha$.
+
+\end{proof}
+
+%\begin{lemma}\label{formula_valuation}
+%Пусть $\alpha$ --- высказывание от $n$ пропозициональных переменных
+%$P_1 \dots P_n$ и пусть выбрана некоторая их оценка $x_1 \dots x_n$.
+%Тогда если $_{[x_1]}P_1 \dots _{[x_n]}P_n \vdash _{[y]} \alpha$, то $y = \alpha [x_1, \dots x_n]$
+%\end{lemma}
+%
+%\begin{proof}
+%Будем доказывать утверждение индукцией по структуре.
+%
+%База. Пусть $\alpha$ --- некоторая пропозициональная переменная $P_1$.
+%Тогда по условию теоремы $_{[x_1]}P_1 \vdash _{[y]}P_1$. Ясно, что так как
+%$P_1 [x_1] = x_1$, то $x = y$.
+%\end{proof}
+
+\begin{theorem}{О корректности исчисления высказываний.}
+Пусть справедливо $\vdash \alpha$. Тогда также справедливо, что $\models \alpha$.
+\end{theorem}
+
+\begin{proof}
+По условию теоремы, у нас есть доказательство высказывания $\alpha$, то есть 
+последовательность высказываний $\alpha_1, \dots \alpha_m$.
+Каждое высказывание --- это либо аксиома, либо применение правила Modus Ponens.
+Докажем, что для каждого $k$ все высказывания $\alpha_l$ при $l \le k$ --- тавтологии.
+Доказательство будем вести индукцией по $k$.
+
+База. Пусть $k=0$, тогда нет ни одного высказывания, про которое нужно доказать, что
+оно --- тавтология, то есть утверждение автоматически верно.
+
+Переход. Пусть для некоторого $k$ утверждение справедливо, докажем его для $k+1$.
+Выберем некоторую оценку $x_1, \dots x_n$ пропозициональных 
+переменных $P_1, \dots P_n$, использованных в высказываниях $\alpha_1 \dots \alpha_{k+1}$.
+Рассмотрим случаи. 
+
+Пусть $\alpha_{k+1}$ --- аксиома. В данную аксиому входят одна, две или три формулы
+$\beta_1, \beta_2, \beta_3$. Подставив всех возможных истинностных значений
+вместо данных формул можно проверить, что все аксиомы являются тавтологиями,
+значит, они будут истинны и на тех конкретных значениях, которые примут данные формулы
+после подстановки значений $x_1, \dots x_n$.
+
+Пусть $\alpha_{k+1}$ получается по правилу Modus Ponens из $\alpha_p$ и 
+$\alpha_q$, причем $\alpha_q \equiv \alpha_p \rightarrow \alpha_{k+1}$.
+Тогда $\llbracket\alpha_p\rrbracket^{P_1 := x_1, \dots P_n:=x_n} = \texttt{И}$ и 
+$\llbracket\alpha_p \rightarrow \alpha_{k+1}\rrbracket^{P_1:=x_1, \dots P_n:=x_n} = \texttt{И}$.
+Из таблицы истинности импликации следует, что неизбежно 
+$\llbracket\alpha_{k+1}\rrbracket^{P_1:=x_1, \dots P_n:=x_n} = \texttt{И}$.
+
+\end{proof}
+
+Заметим, что вместе из этих двух теорем следует, что если неверно, что $\vdash \alpha$,
+то неизбежно найдется контрпример.
+
+%
+%$\alpha [P_1 := \texttt{И}] = \texttt{И}]$,
+%и $\alpha [P_1 := \texttt{Л}] = \texttt{И}]$.
+%Тогда, по лемме ..., справедливо $P_1 \vdash \alpha$ и $\neg P_1 \vdash \alpha$.
+%Тогда, по лемме об исключении предположения, справедливо и $\vdash \alpha$.
+%
+%Переход. Пусть для любой формулы от $n-1$ переменной из $\models \alpha$
+%следует $\vdash \alpha$. Рассмотрим некоторую формулу от $n$ переменных $\alpha$,
+%с пропозициональными переменными $P_1, \dots P_n$.
+%Тогда (по лемме ...) справедливо следующее:
+%
+%Тогда, если при некотором $k$ и при любой оценке $x_1, \dots x_k$
+%переменных $P_1, \dots P_k$
+%выполнено $\alpha [P_1 := x_1, \dots P_k := x_k] = \texttt{И}$, то 
+%Тогда (по лемме ...) справедливо следующее:
+%
+%См. Стефан Клини, Математическая логика, М. <<Мир>>, 1973. Глава 1, параграф 12, стр. 61-64.
+%
+%Данное доказательство изложено не до конца формально, но дальнейшая его формализация
+%усложнит изложение, при этом ничего не даст для понимания вопроса. Надеемся, что каждый
+%без труда восстановит математическую индукцию, прячющуюся за данным рассуждением.
+%Также заметим, что поскольку данное доказательство изложено на мета-языке, эта апелляция
+%к интуиции и здравому смыслу не должна нас чрезмерно смущать.
+%\end{proof}
+
+

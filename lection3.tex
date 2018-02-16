@@ -152,28 +152,7 @@ $\gamma, \delta \vdash \alpha$, то справедливо и $\Gamma, \Delta \
 \end{lemma}
 
 \begin{proof}
-%Поскольку $\gamma, \delta \vdash \alpha$, то по теореме о дедукции найдется 
-%доказательство $\gamma \rightarrow \delta \rightarrow \alpha$.
-
-Мы получим требуемый вывод, просто последовательно соединив все три исходных 
-вывода. Первые два вывода будут (очевидно) корретными при допущениях $\Gamma$ 
-и $\Delta$. В третьем же выводе могут использоваться высказывания $\gamma$ и $\delta$,
-отсутствующие в предположениях.
-Но поскольку эти высказывания доказаны в первых двух частях вывода, мы будем
-иметь полное право их упоминать --- на тех же основаниях, на которых они указаны
-в конце соответствующих доказательств.
-
-%Следующая последовательность высказываний является выводом $\alpha$ из
-%$\Gamma$ и $\Delta$:
-%
-%\begin{tabular}{lll}
-%$(1) \dots (m)$ & $\gamma_1 \dots \gamma_{m-1}, \gamma$ & Вывод $\Gamma \vdash \gamma$\\
-%$(m+1) \dots (n)$ & $\delta_1 \dots \delta_{n-m-1}, \delta$ & Вывод $\Delta \vdash \delta$\\
-%$(n+1) \dots (s)$ & $\sigma_1 \dots \sigma_{s-n-1}, \gamma \rightarrow \delta \rightarrow \alpha$ & Вывод $\gamma, \delta \vdash \alpha$\\
-%$(s+1)$ & $\delta \rightarrow \alpha$ & M.P. $m$, $s$\\
-%$(s+2)$ & $\alpha$ & M.P. $n$, $s+1$\\
-%\end{tabular}
-
+Упражнение
 \end{proof}
 
 Возьмем некоторую связку исчисления высказываний, например конъюнкцию: $A \& B$.
@@ -245,18 +224,6 @@ $(2)\dots(k+1)$ & $\delta_1, \dots \delta_{k-1}, (\neg\alpha \rightarrow \alpha\
 $(k+2)$ & $\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha$ & M.P. 1,$k+1$\\
 \end{tabular}
 
-%Применив теорему о дедукции, получим: $\neg(\alpha\vee\neg\alpha) \vdash \neg\neg\alpha$. Далее,
-%в данном допущении, построим следующий вывод:
-%
-%\begin{tabular}{lll}
-%$(1)$ & $\neg\neg\alpha \rightarrow \alpha$ & Сх. акс. 10\\
-%$(2)\dots(l+1)$ & $\epsilon_1, \dots \epsilon_{l-1}, \neg\neg\alpha $ & По теореме о дедукции \\
-%$(l+2)$ & $\alpha $ & M.P. $l+1$,1
-%\end{tabular}
-%
-%И по теореме о дедукции из данного вывода мы можем получить доказательство
-%утверждения $\vdash \neg(\alpha\vee\neg\alpha) \rightarrow \alpha$.
-
 \item
 Теперь докажем все вместе:
 
@@ -297,26 +264,7 @@ $(k+2)$ & $\neg(\alpha\vee\neg\alpha) \rightarrow \neg\neg\alpha$ & M.P. 1,$k+1$
 \end{lemma}
 
 \begin{proof}
-
-Применив теорему о дедукции к условиям теоремы получим следующее:
-
-\begin{tabular}{l}
-$\Gamma \vdash \rho \rightarrow \alpha$\\
-$\Gamma \vdash \neg \rho \rightarrow \alpha$
-\end{tabular}
-
-Тогда следующий вывод покажет $\Gamma \vdash \alpha$:
-
-\begin{tabular}{lll}
-$(1) \dots (p)$ & $\gamma_1, \dots \gamma_{p-1}, \rho \rightarrow \alpha$ & Вывод $\Gamma \vdash \rho \rightarrow \alpha$\\
-$(p+1) \dots (q)$ & $\delta_1, \dots \delta_{q-p-1}, \neg \rho \rightarrow \alpha$ & Вывод $\Gamma \vdash \neg \rho \rightarrow \alpha$\\
-$(q+1) \dots (r)$ & $\epsilon_1, \dots \epsilon_{r-q-1}, \rho \vee \neg \rho$ & Лемма \ref{excluded_third}\\
-$(r+1)$ & $(\rho \rightarrow \alpha) \rightarrow (\neg \rho \rightarrow \alpha) \rightarrow (\rho \vee \neg \rho) \rightarrow \alpha$ & Сх. аксиом 8\\
-$(r+2)$ & $(\neg \rho \rightarrow \alpha) \rightarrow (\rho \vee \neg \rho \rightarrow \alpha)$ & M.P. $1$, $r+1$\\
-$(r+3)$ & $\rho \vee \neg \rho \rightarrow \alpha$ & M.P. $p$, $r+2$\\
-$(r+4)$ & $\alpha$ & M.P. $r$, $r+3$
-\end{tabular}
-
+Упражнение
 \end{proof}
 
 \begin{theorem}{О полноте исчисления высказываний.}

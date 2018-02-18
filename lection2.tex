@@ -20,16 +20,35 @@
 Связок в языке мы определим 4 (хотя при необходимости этот список может быть
 в любой момент изменен).
 \begin{itemize}
+\item отрицание: если $\alpha$ --- высказывание, то $\neg\alpha$ --- тоже высказывание.
 \item конъюнкция: если $\alpha$ и $\beta$ --- высказывания, то $\alpha \& \beta$ --- тоже высказывание.
 \item дизъюнкция: если $\alpha$ и $\beta$ --- высказывания, то $\alpha \vee \beta$ --- тоже высказывание.
 \item импликация: если $\alpha$ и $\beta$ --- высказывания, то $\alpha \rightarrow \beta$ --- тоже высказывание.
-\item отрицание: если $\alpha$ --- высказывание, то $\neg\alpha$ --- тоже высказывание.
 \end{itemize}
 
+Также в языке можно использовать скобки вокруг выражений:
+если $\alpha$ --- высказывание, то $(\alpha)$ --- тоже высказывание.
+Если из расстановки скобок не следует иное, мы пользуемся их приоритетом
+(связки в перечислении выше указаны в порядке убывания приоритета).
+Также, конъюнкцию и дизъюнкцию мы будем считать левоассоциативной, 
+а импликацию --- правоассоциативной. 
+
 Высказывания, подробности
-которых нас не интересуют, мы будем обозначать начальными буквами греческого алфавита
-($\alpha$, $\beta$, $\gamma$ и т.п.). Ещё мы будем называть такие
+которых нас не интересуют, мы будем обозначать начальными буквами 
+греческого алфавита
+($\alpha$, $\beta$, $\gamma$ и т.п.). 
+Ещё мы будем называть такие
 высказывания \emph{метапеременными}.
+Одинаковым буквам всегда соответствуют
+одинаковые высказывания, однако, разным буквам не обязаны соответствовать
+разные высказывания. 
+При подстановке выражений вместо метапеременных мы всегда предполагаем,
+что эти выражения взяты в скобки.
+
+Покажем эти правила на примере. Выражение
+$$\alpha \rightarrow \neg \beta \& \gamma \vee \delta \vee \epsilon \rightarrow \zeta\vee\iota$$
+нужно воспринимать так:
+$$(\alpha) \rightarrow \left(((((\neg (\beta)) \& (\gamma)) \vee (\delta)) \vee (\epsilon)) \rightarrow ((\zeta)\vee(\iota))\right)$$
 
 \subsection{Оценка высказываний}
 
@@ -46,7 +65,7 @@
 подразумеваться, если не указано иного.
 
 Среди высказываний выделяются те, что остаются истинными при любой оценке пропозициональных
-переменных. Такие высказывания называют \emph{тавталогиями} или \emph{общезначимыми высказываниями}.
+переменных. Такие высказывания называют \emph{тавтологиями} или \emph{общезначимыми высказываниями}.
 Также, на языке исследователя общезначимость высказывания $\alpha$ можно кратко 
 записать как $\models \alpha$. 
 
@@ -66,24 +85,28 @@
 
 Для решения вопроса мы введём понятие \emph{схемы аксиом} --- некоторого обобщённого
 шаблона, подставляя значения в который, мы получаем различные, но схожие аксиомы. 
-Например, схема аксиом $\psi \& \phi \rightarrow \psi$ позволяет получить как
-аксиому $A \& B \rightarrow A$ (при подстановке $\psi := A, \phi := B$), так и
+Например, схема аксиом $\alpha \& \beta \rightarrow \alpha$ позволяет получить как
+аксиому $A \& B \rightarrow A$ (при подстановке $\alpha := A, \beta := B$), так и
 аксиому $B \& A \rightarrow B$.
 
 Возьмем следующие схемы аксиом для исчисления высказываний.
 
 \begin{tabular}{ll}
-(1) & $(\phi) \rightarrow ((\psi) \rightarrow (\phi))$ \\
-(2) & $((\phi) \rightarrow (\psi)) \rightarrow ((\phi) \rightarrow (\psi) \rightarrow (\pi)) \rightarrow ((\phi) \rightarrow (\pi))$ \\
-(3) & $(\phi) \rightarrow (\psi) \rightarrow (\phi) \& (\psi)$\\
-(4) & $(\phi) \& (\psi) \rightarrow (\phi)$\\
-(5) & $(\phi) \& (\psi) \rightarrow (\psi)$\\
-(6) & $(\phi) \rightarrow (\phi) \vee (\psi)$\\
-(7) & $(\psi) \rightarrow (\phi) \vee (\psi)$\\
-(8) & $((\phi) \rightarrow (\pi)) \rightarrow ((\psi) \rightarrow (\pi)) \rightarrow ((\phi) \vee (\psi) \rightarrow (\pi))$\\
-(9) & $((\phi) \rightarrow (\psi)) \rightarrow ((\phi) \rightarrow \neg (\psi)) \rightarrow \neg (\phi)$\\
-(10) & $\neg \neg (\phi) \rightarrow (\phi)$
+(1) & $\alpha \rightarrow \beta \rightarrow \alpha$ \\
+(2) & $(\alpha \rightarrow \beta) \rightarrow (\alpha \rightarrow \beta \rightarrow \gamma) \rightarrow (\alpha \rightarrow \gamma)$ \\
+(3) & $\alpha \rightarrow \beta \rightarrow \alpha \& \beta$\\
+(4) & $\alpha \& \beta \rightarrow \alpha$\\
+(5) & $\alpha \& \beta \rightarrow \beta$\\
+(6) & $\alpha \rightarrow \alpha \vee \beta$\\
+(7) & $\beta \rightarrow \alpha \vee \beta$\\
+(8) & $(\alpha \rightarrow \gamma) \rightarrow (\beta \rightarrow \gamma) \rightarrow (\alpha \vee \beta \rightarrow \gamma)$\\
+(9) & $(\alpha \rightarrow \beta) \rightarrow (\alpha \rightarrow \neg \beta) \rightarrow \neg \alpha$\\
+(10) & $\neg \neg \alpha \rightarrow \alpha$
 \end{tabular}
+
+Напомним, что импликация --- правоассоциативная операция, поэтому
+скобки в схеме аксиом 1, например, расставляются так:
+$(\alpha) \rightarrow ((\beta) \rightarrow (\alpha))$
 
 Помимо аксиом, нам требуется каким-то образом научиться преобразовывать одни верные утверждения
 в другие.
@@ -114,4 +137,4 @@ $\alpha_k$ совпадает с $\alpha$.
 чтобы сказать, что $\alpha$ доказуемо.
 
 Традиционно правило вывода Modus Ponens записывают так:
-$$\infer{\psi}{\phi & (\phi) \rightarrow (\psi)}$$
+$$\infer{\beta}{\alpha & \alpha \rightarrow \beta}$$

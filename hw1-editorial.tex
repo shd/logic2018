@@ -1,0 +1,243 @@
+\documentclass[10pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\usepackage{proof}
+\newcommand{\gq}[1]{\texttt{«}#1\texttt{»}}
+\newcommand{\ogq}[1]{\overline{\texttt{«}#1\texttt{»}}}
+\begin{document}
+
+\section*{Разбор домашнего задания №1}
+
+Первые три задачи мы разберём по возможности близко к определениям, либо строя 
+требуемые выводы, либо явно ссылаясь на соответствующие теоремы, гарантирующие их 
+существование. Последние две задачи мы приведём на более высокоуровневом языке, 
+не сильно менее строгом, но более выразительном и более далёком от базовых определений.
+
+Очень полезной при решении задач оказывается теорема о дедукции. Причём, в обе стороны.
+Т. е. $\alpha\vdash\beta \iff \vdash\alpha\rightarrow\beta$
+
+
+\begin{enumerate}[label=(\alph*)]
+\item $\vdash\alpha\&\beta\rightarrow\beta\&\alpha$
+\newline
+  Нужно было доказать, что конъюнкция удовлетворяет закону коммутативности. 
+  Идея в том, что зная $\alpha\&\beta$ мы с помощью схем аксиом разбиваем её 
+  на $\alpha$ и $\beta$. Потом собираем в другом порядке.
+
+Следующий вывод покажет $\alpha\&\beta\vdash\beta\&\alpha$:
+
+\begin{enumerate}[label=(\arabic*)]
+\item $\alpha\&\beta$ (гипотеза)
+\item $\alpha\&\beta\rightarrow\alpha$ (сх. акс. 4)
+\item $\alpha\&\beta\rightarrow\beta$ (сх. акс. 5)
+\item $\alpha$ (M. P. 2, 1)
+\item $\beta$ (M. P. 3, 1)
+\item $\beta\rightarrow\alpha\rightarrow\beta\&\alpha$ (сх. акс. 3)
+\item $\alpha\rightarrow\beta\&\alpha$ (M. P. 6, 5)
+\item $\beta\&\alpha$ (M. P. 7, 4)
+\end{enumerate}
+
+Далее же, применив теорему о дедукции, 
+получаем требуемое $\vdash\alpha\&\beta\rightarrow\beta\&\alpha$
+  
+\item $\vdash\alpha \rightarrow \neg\neg \alpha$
+\newline
+  Для доказательства этой теоремы можно воспользоваться тем, что если 
+  формула $\alpha$ верна, то благодаря первой схеме аксиом мы можем 
+  вывести и $\beta\rightarrow\alpha$ для произвольной формулы $\beta$. 
+  В частности, будет верна и формула $\neg\alpha\rightarrow\alpha$. 
+  Формулы $\neg\alpha\rightarrow\neg\alpha$ (доказана в конспекте) и 
+  $\neg\alpha\rightarrow\alpha$ приводят нас к противоречию. 
+  Доказательство формул от противного даёт нам девятая схема аксиом. 
+
+  Поскольку в предметном языке у нас нет возможности использовать ссылки на конспект, 
+  нам придётся переписывать вывод 
+  $\neg\alpha\rightarrow\neg\alpha$ явно.
+
+  Итак, покажем $\alpha\vdash\neg\neg\alpha$. В этом выводе
+  высказывания с 1 по 3 нужны, чтобы показать
+  $\alpha\vdash\neg\alpha\rightarrow\alpha$. Высказывания с 4 по 8 
+  скопированы из конспекта (из леммы 4.2, с 
+  подстановкой $\alpha := \neg\alpha$) --- так мы показываем
+  $\alpha\vdash\neg\alpha\rightarrow\neg\alpha$.
+  И заключительная часть (высказывания с 9 по 11) собственно и 
+  содержит само приведение к противоречию.
+
+\begin{enumerate}[label=(\arabic*)]
+\item $\alpha$ (гипотеза)
+\item $\alpha\rightarrow(\neg\alpha\rightarrow\alpha)$ (сх. акс. 1)
+\item $\neg\alpha\rightarrow\alpha$ (M. P. 2, 1)
+\item $\neg\alpha\rightarrow\neg\alpha\rightarrow\neg\alpha$ (сх. акс. 1)
+\item $(\neg\alpha \rightarrow \neg\alpha \rightarrow \neg\alpha) \rightarrow 
+  (\neg\alpha \rightarrow ((\neg\alpha \rightarrow \neg\alpha) \rightarrow \neg\alpha)) \rightarrow
+  (\neg\alpha \rightarrow \neg\alpha)$ (Сх. акс. 2)
+\item $(\neg\alpha \rightarrow ((\neg\alpha \rightarrow \neg\alpha) \rightarrow \neg\alpha)) \rightarrow
+  (\neg\alpha \rightarrow \neg\alpha)$ (M.P. 5, 4)
+\item $(\neg\alpha \rightarrow ((\neg\alpha \rightarrow \neg\alpha) \rightarrow \neg\alpha))$ (Сх. акс. 1)
+\item $\neg\alpha\rightarrow\neg\alpha$ (M.P. 7, 6)
+\item $(\neg\alpha\rightarrow\alpha)\rightarrow(\neg\alpha\rightarrow\neg\alpha)\rightarrow\neg\neg\alpha$ (сх. акс. 9)
+\item $(\neg\alpha\rightarrow\neg\alpha)\rightarrow\neg\neg\alpha$ (M. P. 9, 3)
+\item $\neg\neg\alpha$ (M. P. 10, 8)
+\end{enumerate}
+
+  Теперь, воспользовавшись теоремой о дедукции, получим 
+  $\vdash\alpha\rightarrow\neg\neg\alpha$
+
+\item $\vdash\alpha\&(\beta\vee\gamma) \rightarrow (\alpha\&\beta)\vee(\alpha\&\gamma)$
+\newline
+  В этой задаче необходимо сконструировать более сложное выражение (т.е.
+  $(\alpha\&\beta)\lor(\alpha\&\gamma)$) из имеющихся у нас более простых
+  (т.е. $\alpha$ и $\beta\lor\gamma$). Единственным способом получить дизъюнкцию
+  справа от импликации являются схемы аксиом 6 и 7. Обратите внимание, что в
+  схеме аксиом 8 также участвует дизъюнкция, но она дает дизъюнкицю слева от
+  импликации (что нам тоже пригодится). Чтобы дать интуицию почему дизъюнкция не
+  может просто сменить свою позицию относительно импликации (т.е. будучи слева
+  перейти вправо или наоборот), можно привести следующий пример, где дизъюнкция
+  превращается в конъюнкцию при смене стороны импликации; сравните: <<если дождь
+  или снег, то осадки>> против <<если не осадки, то не дождь и не снег>>.
+
+  Сперва мы выведем $(\alpha\&\beta)\vee(\alpha\&\gamma)$ из
+  предположений $\alpha$ и $\beta$ и, отдельно, из предположений $\alpha$ и $\gamma$.
+  Затем перенесём $\beta$ и $\gamma$ вправо с помощью теоремы о
+  дедукции и введём дизъюнкцию слева от ипмпликации, соединив эти два 
+  предположения в одно с помощью схемы аксиом 8.
+
+\begin{enumerate}[label=(\Alph*)]
+\item Сперва получим $\alpha,\beta\vdash(\alpha\&\beta)\vee(\alpha\&\gamma)$
+\newline
+
+  Доказательство:
+\begin{enumerate}[label=(\arabic*)]
+\item $\alpha$ (гипотеза)
+\item $\beta$ (гипотеза)
+\item $\alpha\rightarrow\beta\rightarrow\alpha\&\beta$ (сх. акс. 3)
+\item $\beta\rightarrow\alpha\&\beta$ (M. P. 3, 1)
+\item $\alpha\&\beta$ (M. P. 4, 2)
+\item $\alpha\&\beta\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma)$ (сх. акс. 6)
+\item $(\alpha\&\beta)\vee(\alpha\&\gamma)$ (M. P. 6, 5)
+\end{enumerate}  
+И теперь по теореме о дедукции получим
+$$\alpha\vdash\beta\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma)$$
+Соответствующий вывод назовём выводом A.
+
+\item Сперва получим $\alpha,\gamma\vdash(\alpha\&\beta)\vee(\alpha\&\gamma)$
+\newline
+  Доказательство аналогично:
+\begin{enumerate}[label=(\arabic*)]
+\item $\alpha$ (гипотеза)
+\item $\gamma$ (гипотеза)
+\item $\alpha\rightarrow\gamma\rightarrow\alpha\&\gamma$ (сх. акс. 3)
+\item $\gamma\rightarrow\alpha\&\gamma$ (M. P. 3, 1)
+\item $\alpha\&\gamma$ (M. P. 4, 2)
+\item $\alpha\&\gamma\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma)$ (сх. акс. 7)
+\item $(\alpha\&\beta)\vee(\alpha\&\gamma)$ (M. P. 6, 5)
+\end{enumerate}
+И теперь по теореме о дедукции получим
+$$\alpha\vdash\gamma\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma)$$
+Соответствующий вывод назовём выводом B.
+
+\item Используя выводы A и B, а также схему аксиом №8, получим вывод, который выводит
+уже почти то, что нам нужно: 
+\newline
+$\vdash\alpha\rightarrow\beta\vee\gamma\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma)$
+\newline 
+Доказательство:
+\begin{enumerate}[label=(\arabic*)]
+\item[(...)] Текст вывода A, без заключительного высказывания
+\item $\beta\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma)$ (заключительное высказывание вывода A)
+\item[(...)] Текст вывода B, без заключительного высказывания
+\item $\gamma\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma)$ (заключительное высказывание вывода B)
+\item $(\beta\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma))\rightarrow(\gamma\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma))\rightarrow(\beta\vee\gamma\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma))$ (сх. акс. 8)
+\item $(\gamma\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma))\rightarrow(\beta\vee\gamma\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma))$ (M. P. 3, 1)
+\item $\beta\vee\gamma\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma)$ (M. P. 4, 2)
+\end{enumerate}
+
+К полученному тексту применим теорему о дедукции и получим:
+$$\vdash\alpha\rightarrow\beta\vee\gamma\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma)$$
+Соответствующий вывод назовём выводом C.
+
+\item Теперь приведём утверждение в вид, который требовался в условии. Рассмотрим предоложение
+$\alpha\&(\beta\vee\gamma)$:
+\begin{enumerate}[label=(\arabic*)]
+\item $\alpha\&(\beta\vee\gamma)$ (гипотеза)
+\item $\alpha\&(\beta\vee\gamma)\rightarrow\alpha$ (сх. акс. 4)
+\item $\alpha$ (M. P. 2, 1)
+\item $\alpha\&(\beta\vee\gamma)\rightarrow(\beta\vee\gamma)$ (сх. акс. 5)
+\item $\beta\vee\gamma$ (M. P. 4, 1)
+\item[(...)] Текст вывода C без последнего высказывания
+\item $\alpha\rightarrow\beta\vee\gamma\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma)$ (Последнее высказывание вывода C)
+\item $\beta\vee\gamma\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma)$ (M. P. 6, 3)
+\item $(\alpha\&\beta)\vee(\alpha\&\gamma)$ (M. P. 7, 5)
+\end{enumerate}
+И, как и раньше, применим теорему о дедукции: 
+$$\vdash\alpha\&(\beta\vee\gamma)\rightarrow(\alpha\&\beta)\vee(\alpha\&\gamma)$$
+\end{enumerate}
+
+\item $\vdash\neg(\alpha\&\beta) \rightarrow \neg\alpha\vee\neg\beta$
+\newline
+Возможно, вас уже утомили многочисленные реверансы в сторону формального определения
+доказательства, приводящие к многословным пояснениям в стиле <<здесь вставим результат
+применения теоремы о дедукции к формуле>>. Давайте поэтому рассуждать не в терминах
+доказательств как таковых, а в терминах возможности их получения (т.е. введем
+некий более высокоуровневый язык для описаний доказательств, который просто
+является сахаром над формальным определением доказательства).
+
+Легко показать, что если $\alpha$ --- аксиома, то при любом $\Gamma$ верно $\Gamma \vdash \alpha$.
+Также несложно показать, что если $\Gamma \vdash \alpha$ и $\Gamma \vdash \alpha\rightarrow\beta$, то
+$\Gamma \vdash \beta$. Т.е. основные свойства теории (способность вводить схемы
+аксиомы и использовать правила вывода) сохраняются вне зависимости от
+содержимого контекста. Мы надеемся, что после примеров, показанных выше, в каждом из этих случаев вы
+без труда воспроизведёте требуемое доказательство. 
+
+В данной теореме необходимо два раза применить правило контрапозиции (которое будет доказано в пункте (е)).
+Также, тут часто используется "временный" вынос допущений в левую часть турникета: таким образом 
+доказательство получается менее громоздким и удобочитаемым. Пример такого выноса виден в шагах 3--6.
+Основная идея доказательства же состоит в получении $\neg(\neg\alpha \lor \neg\beta) \to \alpha$ и 
+$\neg(\neg\alpha \lor \neg\beta) \to \beta$ симметричными способами. Далее $\alpha$ и $\beta$ из 
+правых частей формул объединяются в $\alpha \& \beta$ и используя контрапозицию мы получаем почти то,
+что искали (необходимо еще убрать двойное отрицание в правой части импликации). Подробнее:
+\begin{enumerate}[label=(\arabic*)]
+\item $\vdash \neg\alpha \to (\neg\alpha \lor \neg\beta)$ (сх. акс. 6)
+\item $\vdash \neg(\neg\alpha \lor \neg\beta) \to \neg\neg\alpha$ (контрапозиция, будет доказана в пункте (e))
+\item $\neg(\neg\alpha \lor \neg\beta) \vdash \neg\neg\alpha$ (т. о дедукции)
+\item $\neg(\neg\alpha \lor \neg\beta) \vdash \neg\neg\alpha \to \alpha$ (сх. акс. 10)
+\item $\neg(\neg\alpha \lor \neg\beta) \vdash \alpha$ (M. P. 4, 3)
+\item $\vdash \neg(\neg\alpha \lor \neg\beta) \to \alpha$ (т. о дедукции)
+\item $\vdash \neg(\neg\alpha \lor \neg\beta) \to \beta$ (аналогично шагам 1--6)
+\item $\neg(\neg\alpha \lor \neg\beta) \vdash \alpha$ (т. о дедукции)
+\item $\neg(\neg\alpha \lor \neg\beta) \vdash \beta$ (т. о дедукции)
+\item $\neg(\neg\alpha \lor \neg\beta) \vdash \alpha \to \beta \to \alpha \& \beta$ (сх. акс. 3)
+\item $\neg(\neg\alpha \lor \neg\beta) \vdash \beta \to \alpha \& \beta$ (M. P. 10, 8)
+\item $\neg(\neg\alpha \lor \neg\beta) \vdash \alpha \& \beta$ (M. P. 11, 9)
+\item $\vdash \neg(\neg\alpha \lor \neg\beta) \to \alpha \& \beta$ (т. о дедукции)
+\item $\vdash \neg(\alpha \& \beta) \to \neg\neg(\neg\alpha \lor \neg\beta)$ (контрапозиция, будет доказана в пункте (e))
+\item $\neg(\alpha \& \beta) \vdash \neg\neg(\neg\alpha \lor \neg\beta)$ (сх. акс. 10)
+\item $\neg(\alpha \& \beta) \vdash \neg\neg(\neg\alpha \lor \neg\beta) \to (\neg\alpha \lor \neg\beta)$ (сх. акс. 10)
+\item $\neg(\alpha \& \beta) \vdash (\neg\alpha \lor \neg\beta)$ (M. P. 16, 15)
+\item $\vdash \neg(\alpha \& \beta) \to (\neg\alpha \lor \neg\beta)$ (т. о дедукции)
+\end{enumerate}
+
+\newpage
+\item $\vdash(\alpha\rightarrow\beta)\rightarrow(\neg\beta\rightarrow\neg\alpha)$
+\newline
+Использование теоремы о дедукции дважды в самом начале (внос $\alpha \to \beta$ и $\neg\beta$ слева от турникета) сильно облегчает дальнейшее доказательство. С помощью девятой схемы аксиом получаем $(\alpha \to \beta) \to (\alpha \to \neg\beta) \to \neg\alpha$. Заметим, что $\alpha \to \beta$ уже состоит слева от турникета, а значит может быть получена справа от турникета как гипотеза. Также, $\alpha \to \neg\beta$ может быть выведена с помощью первой схемы аксиом и гипотезы $\neg\beta$. Подробнее:
+\begin{enumerate}[label=(\arabic*)]
+\item $\alpha \to \beta, \neg\beta \vdash (\alpha \to \beta) \to (\alpha \to \neg\beta) \to \neg\alpha$ (сх. акс. 9)
+\item $\alpha \to \beta, \neg\beta \vdash \alpha \to \beta$ (гипотеза)
+\item $\alpha \to \beta, \neg\beta \vdash (\alpha \to \neg\beta) \to \neg\alpha$ (M. P. 1, 2)
+\item $\alpha \to \beta, \neg\beta \vdash \neg\beta \to \alpha \to \neg\beta$ (сх. акс. 1)
+\item $\alpha \to \beta, \neg\beta \vdash \neg\beta$ (гипотеза)
+\item $\alpha \to \beta, \neg\beta \vdash \alpha \to \neg\beta$ (M. P. 4, 5)
+\item $\alpha \to \beta, \neg\beta \vdash \neg\alpha$ (M. P. 3, 6)
+\item $\vdash (\alpha \to \beta) \to (\neg\beta \to \neg\alpha)$ (т. о дедукции)
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

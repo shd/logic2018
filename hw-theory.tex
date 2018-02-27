@@ -15,7 +15,7 @@
 \begin{center}{\Large\textsc{\textbf{Теоретические (``малые'') домашние задания}}}\\
              \it Математическая логика, ИТМО, М3234-М3239, весна 2018 года\end{center}
 
-\section*{Домашнее задание №1}
+\section*{Домашнее задание №1: <<знакомство с исчислением высказываний>>}
 
 Докажите при любых подстановках метапеременных $\alpha$, $\beta$ и $\gamma$:
 \begin{enumerate}
@@ -26,7 +26,7 @@
 \item $\vdash(\alpha\rightarrow\beta)\rightarrow(\neg\beta\rightarrow\neg\alpha)$
 \end{enumerate}
 
-\section*{Домашнее задание №2}
+\section*{Домашнее задание №2: <<теорема о полноте исчисления высказываний>>}
 
 В данном домашнем задании вам будет предложено доказать несколько
 важных лемм, используемых в теореме о полноте исчисления
@@ -63,6 +63,54 @@
 
 \item Докажите, что если $\Gamma, \rho \vdash \alpha$ и $\Gamma, \neg\rho \vdash \alpha$,
 то $\Gamma \vdash \alpha$
+\end{enumerate}
+
+\section*{Домашнее задание №3: <<интуиционистское исчисление высказываний>>}
+
+Введём обозначение: нижним индексом у <<турникета>> будем указывать логику, в которой 
+проводится доказательство. Если высказывание $\alpha$ доказуемо в интуиционистской логике,
+будем писать $\vdash_\texttt{И}\alpha$, если в классической --- $\vdash_\texttt{К}\alpha$.
+
+\begin{enumerate}
+
+\item Напомним, как на лекции определялась оценка высказываний интуиционистского 
+исчисления на топологическом пространстве $\langle X, \Omega \rangle$:
+
+\begin{tabular}{l}\\
+$\llbracket \alpha \& \beta \rrbracket = \llbracket \alpha \rrbracket \cap \llbracket \beta \rrbracket$\\
+$\llbracket \alpha \vee \beta \rrbracket = \llbracket \alpha \rrbracket \cup \llbracket \beta \rrbracket$\\
+$\llbracket \alpha \rightarrow \beta \rrbracket = \mathrm{int}(\mathrm{c}(\llbracket \alpha \rrbracket) \cup \llbracket \beta \rrbracket)$\\
+$\llbracket \neg \alpha \rrbracket = \mathrm{int}(\mathrm{c}(\llbracket \alpha \rrbracket))$
+\end{tabular}
+
+Также, положим, что высказывание $\alpha$ истинно, если $\llbracket\alpha\rrbracket = X$
+(т.е. любое доказуемое высказывание неизбежно имеет оценку, равную всему пространству).
+Докажите, что так опеределённая оценка корректна.
+
+\item Докажите теорему Гливенко: $\vdash_\texttt{К}\alpha$ тогда и только тогда, когда
+$\vdash_\texttt{И}\neg\neg\alpha$. Чтобы это сделать, сперва докажите три вспомогательных
+утверждения:
+\begin{enumerate}
+\item $\vdash_\texttt{И}\neg\neg\alpha$, если $\alpha$ --- некоторая аксиома интуиционистского
+исчисления высказываний.
+\item При любом $\alpha$ выполнено $\vdash_\texttt{И}\neg\neg(\neg\neg\alpha \rightarrow \alpha)$
+\item При любых $\alpha$ и $\beta$, если $\vdash_\texttt{И}\neg\neg\alpha$ и
+$\vdash_\texttt{И}\neg\neg(\alpha\rightarrow\beta)$, то $\vdash_\texttt{И}\neg\neg\beta$
+\end{enumerate}
+
+\item Покажите с помощью опровергающего примера, что в интуиционистской логике не выполнено:
+\begin{enumerate}
+\item $\vdash_\texttt{И}\neg\neg P\rightarrow P$
+\item $\vdash_\texttt{И}((P\rightarrow Q)\rightarrow P)\rightarrow P$
+ (<<закон Пирса>>)
+\end{enumerate}
+
+\item (Задача Куратовского) Будем применять к множеству в некоторой топологии различные 
+последовательности операций $\mathrm{int}$ и $\mathrm{cl}$ и смотреть на получившиеся
+результаты. Некоторые множества будут
+совпадать: скажем, всегда $\mathrm{int}A = \mathrm{int}(\mathrm{int}A)$, а некоторые будут
+различны. Сколько вообще возможно получить различных множеств таким способом?
+
 \end{enumerate}
 
 \end{document}

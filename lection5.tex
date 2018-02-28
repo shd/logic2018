@@ -1,0 +1,29 @@
+\subsection{Булева алгебра и Топологическая интерпретация интуиционистского исчисления высказываний}
+
+Мы построим две параллельные интерпретации для классической и интуиционистской логики.
+
+\begin{definition}
+\end{definition}
+
+Пусть дано некоторое исчисление высказываний, для которого нам нужно
+построить модель --- предложить способ оценки истинности выражений.
+Начинаем мы с множества истинностных значений.
+Возьмем в качестве этого множества все открытые множества некоторого
+заранее выбранного топологического пространства.
+Определим оценку для связок интуиционистского исчисления высказываний следующим образом:
+
+\begin{tabular}{l}\\
+$\llbracket A \& B \rrbracket = \llbracket A \rrbracket \cap \llbracket B \rrbracket$\\
+$\llbracket A \vee B \rrbracket = \llbracket A \rrbracket \cup \llbracket B \rrbracket$\\
+$\llbracket A \rightarrow B \rrbracket = (c\llbracket A \rrbracket \cup \llbracket B \rrbracket)^\circ$\\
+$\llbracket \neg A \rrbracket = (c \llbracket A \rrbracket)^\circ$
+\end{tabular}
+
+Будем считать, что формула истинна в данной модели, если её значение оказалось равно
+всему пространству. 
+
+Например, возьмем в качестве пространства $\mathbb{R}$, и вычислим значение формулы $A \vee \neg A$ 
+при $A$ равном $(0,1)$: $\llbracket A \vee \neg A \rrbracket = (0,1) \cup \llbracket \neg A \rrbracket = 
+(0,1) \cup (c(0,1))^\circ = (0,1) \cup ((-\infty,0)\cup(1,\infty)) = (-\infty,0)\cup(0,1)\cup(1,\infty)$.
+Нетрудно видеть, что данная формула оказалась не общезначимой в данной интерпретации.
+

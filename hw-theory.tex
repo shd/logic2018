@@ -164,9 +164,12 @@ $\langle W, \{s\subseteq W \mid a \in s \;\textrm{и}\; a \sqsubseteq b \;\textr
 элементы алгебры --- все открытые множества, упорядоченные включением.
 За $\llbracket P \rrbracket$ возьмём множество всех миров, на которых переменная $P$ вынуждена
 (поясните, почему это --- открытое множество).
-Тогда покажите, что $W_k \Vdash \alpha \vee \beta$ тогда и только тогда, когда
-$W_k \in \llbracket \alpha \rrbracket \cup \llbracket \beta \rrbracket$, покажите тот же
-результат для остальных связок --- конъюнкции, импликации, отрицания.
+Тогда покажите, что $W_k \Vdash \alpha \vee \beta$ (а также: $\alpha\&\beta$, $\alpha\rightarrow\beta$,
+$\neg\alpha$) тогда и только тогда, когда
+$W_k \in \llbracket \alpha \rrbracket \cup \llbracket \beta \rrbracket$
+(соответственно: $\llbracket\alpha\rrbracket\cap\llbracket \beta \rrbracket$,
+$\mathrm{int}(\mathrm{c}(\llbracket\alpha\rrbracket)\cup\llbracket \beta \rrbracket)$,
+$\mathrm{int}(\mathrm{c}(\llbracket\alpha\rrbracket))$).
 С использованием этого восполните все пробелы в доказательстве 
 того, что модели Крипке --- частный случай алгебр Гейтинга.
 \item Из общего определения, данного на лекции, на основе операций в алгебре Гейтинга $A$ 

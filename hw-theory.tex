@@ -120,15 +120,15 @@ $\vdash_\texttt{И}\neg\neg(\alpha\rightarrow\beta)$, то $\vdash_\texttt{И}\n
 исчисления образуют множество $F$.
 
 \begin{enumerate}
-\item Будем писать $\alpha\subseteq_*\beta$, если $\alpha\vdash\beta$.
+\item Будем писать $\alpha\sqsubseteq_*\beta$, если $\alpha\vdash\beta$.
 \item Будем писать $\alpha\approx\beta$, если $\alpha\vdash\beta$ и $\beta\vdash\alpha$
 \item Пусть задано некоторое отношение эквивалентности $R$, тогда имеют место следующие определения:
 \begin{itemize}
 \item $[\alpha]_R = \{\beta\in F \mid R(\alpha,\beta) \}$
 \item (фактор-множество) $F/R = \{[\alpha]_R, \alpha \in R \}$
 \end{itemize}
-\item Рассмотрим фактор-множество $F/\approx$. Будем писать $[\alpha]_\approx\subseteq[\beta]_\approx$, 
-если $\alpha\subseteq_*\beta$. Нижний индекс у квадратных скобок мы будем опускать, если ясно,
+\item Рассмотрим фактор-множество $F/\approx$. Будем писать $[\alpha]_\approx\sqsubseteq[\beta]_\approx$, 
+если $\alpha\sqsubseteq_*\beta$. Нижний индекс у квадратных скобок мы будем опускать, если ясно,
 о каком отношении идёт речь.
 \end{enumerate}
 
@@ -137,12 +137,12 @@ $\vdash_\texttt{И}\neg\neg(\alpha\rightarrow\beta)$, то $\vdash_\texttt{И}\n
 \begin{enumerate}
 \item Покажите, что $[\alpha]_R=[\beta]_R$ тогда и только тогда, когда $R(\alpha,\beta)$.
 \item Покажите, что $[\alpha]_R$ и $[\beta]_R$ либо совпадают, либо не пересекаются.
-\item Покажите, что $(\subseteq)$ не зависит от выбора конкретных представителей классов 
-эквивалентности: если $\alpha\approx\alpha_1$ и $\beta\approx\beta_1$, то $[\alpha]\subseteq[\beta]$
-тогда и только тогда, когда $[\alpha_1]\subseteq[\beta_1]$.
-\item Покажите, что $(\subseteq_*)$ является отношением предпорядка, а $(\subseteq_*)$ --- отношением
+\item Покажите, что $(\sqsubseteq)$ не зависит от выбора конкретных представителей классов 
+эквивалентности: если $\alpha\approx\alpha_1$ и $\beta\approx\beta_1$, то $[\alpha]\sqsubseteq[\beta]$
+тогда и только тогда, когда $[\alpha_1]\sqsubseteq[\beta_1]$.
+\item Покажите, что $(\sqsubseteq_*)$ является отношением предпорядка, а $(\sqsubseteq_*)$ --- отношением
 порядка.
-\item Покажите, что $F/\approx$ с отношением $\subseteq$ является: (а) решёткой, (б) импликативной
+\item Покажите, что $F/\approx$ с отношением $\sqsubseteq$ является: (а) решёткой, (б) импликативной
 решёткой, (в) алгеброй Гейтинга.
 \end{enumerate}
 

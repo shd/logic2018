@@ -125,11 +125,13 @@ $\vdash_\texttt{И}\neg\neg(\alpha\rightarrow\beta)$, то $\vdash_\texttt{И}\n
 \item Пусть задано некоторое отношение эквивалентности $R$, тогда имеют место следующие определения:
 \begin{itemize}
 \item $[\alpha]_R = \{\beta\in F \mid R(\alpha,\beta) \}$
-\item (фактор-множество) $F/R = \{[\alpha]_R, \alpha \in R \}$
-\end{itemize}
-\item Рассмотрим фактор-множество $F/\!\!\approx$. Будем писать $[\alpha]_\approx\sqsubseteq[\beta]_\approx$, 
-если $\alpha\sqsubseteq^*\beta$. Нижний индекс у квадратных скобок мы будем опускать, если ясно,
+\item (фактор-множество) $F/R = \{[\alpha]_R, \alpha \in R \}$.
+Нижний индекс у квадратных скобок мы будем опускать, если ясно,
 о каком отношении идёт речь.
+\end{itemize}
+\item Рассмотрим фактор-множество $F/\!\!\approx$. Будем писать 
+$[\alpha]_\approx\sqsubseteq[\beta]_\approx$, если $\alpha_1\sqsubseteq^*\beta_1$
+при всех $\alpha_1\in[\alpha]_\approx$ и $\beta_1\in[\beta]_\approx$. 
 \end{enumerate}
 
 \subsection*{Задания}
@@ -137,11 +139,8 @@ $\vdash_\texttt{И}\neg\neg(\alpha\rightarrow\beta)$, то $\vdash_\texttt{И}\n
 \begin{enumerate}
 \item Покажите, что $[\alpha]_R=[\beta]_R$ тогда и только тогда, когда $R(\alpha,\beta)$.
 \item Покажите, что $[\alpha]_R$ и $[\beta]_R$ либо совпадают, либо не пересекаются.
-\item Покажите, что $(\sqsubseteq)$ определена корректно, то есть, несмотря на своё
-определение, данное по конкретным представителям классов, на деле это --- отношение
-между множествами и не зависит от выбора конкретных представителей классов 
-эквивалентности. Это можно сделать, показав, что если $\alpha_1\in[\alpha]$, 
-$\beta_1\in[\beta]$ и $[\alpha]\sqsubseteq[\beta]$, то $\alpha_1\sqsubseteq^*\beta_1$. 
+\item Покажите, что если $\alpha_1\in[\alpha]_\approx$, $\beta_1\in[\beta]_\approx$ и 
+$\alpha_1\sqsubseteq^*\beta_1$, то $[\alpha]_\approx\sqsubseteq[\beta]_\approx$. 
 \item Покажите, что $(\sqsubseteq^*)$ является отношением предпорядка, а $(\sqsubseteq)$ --- отношением
 порядка.
 \item Покажите, что $F/\!\!\approx$ с отношением $\sqsubseteq$ является: (а) решёткой, (б) импликативной

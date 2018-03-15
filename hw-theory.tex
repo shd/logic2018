@@ -120,16 +120,23 @@ $\vdash_\texttt{И}\neg\neg(\alpha\rightarrow\beta)$, то $\vdash_\texttt{И}\n
 исчисления образуют множество $F$.
 
 \begin{enumerate}
-\item Будем писать $\alpha\sqsubseteq_*\beta$, если $\alpha\vdash\beta$.
+\item Будем писать $\alpha\sqsubseteq^*\beta$, если $\alpha\vdash\beta$.
 \item Будем писать $\alpha\approx\beta$, если $\alpha\vdash\beta$ и $\beta\vdash\alpha$
 \item Пусть задано некоторое отношение эквивалентности $R$, тогда имеют место следующие определения:
 \begin{itemize}
-\item $[\alpha]_R = \{\beta\in F \mid R(\alpha,\beta) \}$
-\item (фактор-множество) $F/R = \{[\alpha]_R, \alpha \in R \}$
-\end{itemize}
-\item Рассмотрим фактор-множество $F/\approx$. Будем писать $[\alpha]_\approx\sqsubseteq[\beta]_\approx$, 
-если $\alpha\sqsubseteq_*\beta$. Нижний индекс у квадратных скобок мы будем опускать, если ясно,
+\item $[\alpha]_R = \{\beta\in F \mid R(\alpha,\beta) \}$.
+Нижний индекс у квадратных скобок мы будем опускать, если ясно,
 о каком отношении идёт речь.
+\item \emph{(фактор-множество)} $F/R = \{[\alpha]_R \mid \alpha \in F \}$.
+\end{itemize}
+\item Рассмотрим фактор-множество $F/\!\!\approx$. Будем писать 
+$[\alpha]_\approx\sqsubseteq[\beta]_\approx$, если $\alpha_1\sqsubseteq^*\beta_1$
+при всех $\alpha_1\in[\alpha]_\approx$ и $\beta_1\in[\beta]_\approx$. 
+\item Дистрибутивная решётка --- решётка, в которой при любых значениях $a$, $b$ и $c$
+выполнено $(a+b)\cdot c = (a \cdot c) + (b \cdot c)$
+\item Импликативная решётка --- решётка, в которой для любых элементов $a$ и $b$ определена
+операция псевдодополнения ($a\rightarrow b = \max \{c \mid a\cdot c\le b\}$)
+\item Алгебра Гейтинга --- импликативная решётка с $0$.
 \end{enumerate}
 
 \subsection*{Задания}
@@ -137,30 +144,43 @@ $\vdash_\texttt{И}\neg\neg(\alpha\rightarrow\beta)$, то $\vdash_\texttt{И}\n
 \begin{enumerate}
 \item Покажите, что $[\alpha]_R=[\beta]_R$ тогда и только тогда, когда $R(\alpha,\beta)$.
 \item Покажите, что $[\alpha]_R$ и $[\beta]_R$ либо совпадают, либо не пересекаются.
-\item Покажите, что $(\sqsubseteq)$ не зависит от выбора конкретных представителей классов 
-эквивалентности: если $\alpha\approx\alpha_1$ и $\beta\approx\beta_1$, то $[\alpha]\sqsubseteq[\beta]$
-тогда и только тогда, когда $[\alpha_1]\sqsubseteq[\beta_1]$.
-\item Покажите, что $(\sqsubseteq_*)$ является отношением предпорядка, а $(\sqsubseteq_*)$ --- отношением
+\item Покажите, что если при некоторых $\alpha$, $\alpha_1$, $\beta$, $\beta_1$ 
+выполнено $\alpha_1\in[\alpha]_\approx$, $\beta_1\in[\beta]_\approx$ и 
+$\alpha_1\sqsubseteq^*\beta_1$, то $[\alpha]_\approx\sqsubseteq[\beta]_\approx$. 
+\item Покажите, что $(\sqsubseteq^*)$ является отношением предпорядка, а $(\sqsubseteq)$ --- отношением
 порядка.
-\item Покажите, что $F/\approx$ с отношением $\sqsubseteq$ является: (а) решёткой, (б) импликативной
+\item Покажите, что $F/\!\!\approx$ с отношением $\sqsubseteq$ является: (а) решёткой, (б) импликативной
 решёткой, (в) алгеброй Гейтинга.
 \end{enumerate}
 
 \section*{Домашнее задание №5: <<Алгебры Гейтинга и Линденбаума, часть 2>>}
 
 \begin{enumerate}
-\item Рассмотрим некоторую модель Крипке. Покажите, что в топологии, построенной по 
-отношению частичного порядка из этой модели, результат оценки связок совпадает с определением, 
-данным в моделях Крипке. С использованием этого восполните все пробелы в доказательстве 
+\item Рассмотрим некоторую модель Крипке на множестве миров $W$ с отношением
+порядка $\sqsubseteq$. Рассмотрим топологическое пространство
+$\langle W, \{s\subseteq W \mid a \in s \;\textrm{и}\; a \sqsubseteq b \;\textrm{влечёт}\; b \in s\}\rangle$;
+иными словами, открытые множества --- все множества, содержащие с элементом все большие его.
+Рассмотрим алгебру Гейтинга, построенную по данному топологическому пространству:
+элементы алгебры --- все открытые множества, упорядоченные включением.
+За $\llbracket P \rrbracket$ возьмём множество всех миров, на которых переменная $P$ вынуждена
+(поясните, почему это --- открытое множество).
+Тогда покажите, что $W_k \Vdash \alpha \vee \beta$ (а также: $\alpha\&\beta$, $\alpha\rightarrow\beta$,
+$\neg\alpha$) тогда и только тогда, когда
+$W_k \in \llbracket \alpha \rrbracket \cup \llbracket \beta \rrbracket$
+(соответственно: $\llbracket\alpha\rrbracket\cap\llbracket \beta \rrbracket$,
+$\mathrm{int}(\mathrm{c}(\llbracket\alpha\rrbracket)\cup\llbracket \beta \rrbracket)$,
+$\mathrm{int}(\mathrm{c}(\llbracket\alpha\rrbracket))$).
+С использованием этого восполните все пробелы в доказательстве 
 того, что модели Крипке --- частный случай алгебр Гейтинга.
 \item Из общего определения, данного на лекции, на основе операций в алгебре Гейтинга $A$ 
-определите формально операции $(+)$, $(\cdot)$, $(\rightarrow)$, $(\tilde)$ в $\Gamma(A)$.
+определите формально операции $(+)$, $(\cdot)$, $(\rightarrow)$, $(\sim)$ в $\Gamma(A)$.
 \item Постройте опровергающие модели Крипке для следующих формул:
 $P\vee\neg P$, $((P\rightarrow Q)\rightarrow P)\rightarrow P$, 
 $(P\rightarrow Q)\vee(P\rightarrow\neg Q)$
-\item Будем рассматривать модели Крипке, в котором отношения между мирами образуют дерево
+\item Будем рассматривать модели Крипке, в которых отношения между мирами образуют дерево
 (у двух миров не бывает одного и того же потомка). Укажите формулу, для которой не 
 существует опровергающей модели Крипке с глубиной дерева меньше $2$, $3$, $n$.
+\item Покажите, что любая импликативная решётка является дистрибутивной решёткой.
 \item Покажите следующие свойства алгебр Гейтинга:
 \begin{enumerate}
 \item При любых $a$ и $b$ выполнено $a\cdot (a\rightarrow b) \le b$.
@@ -170,7 +190,6 @@ $(P\rightarrow Q)\vee(P\rightarrow\neg Q)$
 \item При любых $a$, $b$ и $c$ выполнено $a\rightarrow b \le ((a\rightarrow (b \rightarrow c)) \rightarrow (a\rightarrow c)$
 \item При любых $a$, $b$ и $c$ выполнено $a\rightarrow c \le (b\rightarrow c) \rightarrow (a+b \rightarrow c)$
 \end{enumerate}
-\item Покажите, что любая импликативная решётка является дистрибутивной решёткой.
 \item Пользуясь предыдущими пунктами, покажите, что алгебры Гейтинга являются 
 корректными моделями ИИВ.
 \end{enumerate}

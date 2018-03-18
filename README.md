@@ -5,6 +5,7 @@
 ### [Теоретические домашние задания](https://github.com/shd/logic2018/blob/master/hw-theory.pdf)
 ### [Практические домашние задания](https://github.com/shd/logic2018/blob/master/hw-practice.pdf)
 ### [Репозиторий: описание и образцы решения 0-й практической задачи](https://github.com/itegulov/hw0-reference-solutions)
+### [Краткая инструкция по утилите make](https://github.com/shd/logic2018/blob/master/make.pdf)
 
 ## Лекция 1
 ### Введение издалека: общая топология

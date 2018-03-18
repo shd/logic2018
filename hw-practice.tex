@@ -51,9 +51,9 @@
 выводящую полученное дерево в файл \texttt{output.txt} в следующей грамматике.
 \vspace{-1mm}
 \begin{bnf}\begin{eqnarray*}
-\ntm{файл} &::=& \ntm{выражение}\\
-\ntm{выражение} &::=& \lit{(}\ntm{знак}\lit{,}\ntm{выражение}\lit{,}\ntm{выражение}\lit{)}\\
-                &|& \lit{(!}\ntm{выражение}\lit{)}\\
+\ntm{файл} &::=& \ntm{вершина}\\
+\ntm{вершина} &::=& \lit{(}\ntm{знак}\lit{,}\ntm{вершина}\lit{,}\ntm{вершина}\lit{)}\\
+                &|& \lit{(!}\ntm{вершина}\lit{)}\\
                 &|& (\lit{A} \dots \lit{Z}) \{\lit{A}\dots\lit{Z}|\lit{0}\dots\lit{9}\}^*\\
 \ntm{знак} &::=& \lit{\&} | \lit{|} | \lit{->}
 \end{eqnarray*}\end{bnf}%

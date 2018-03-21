@@ -104,8 +104,82 @@ $\delta_i$ и $\delta_j$, где $\delta_j \equiv \delta_i\rightarrow\delta_n$
 путём применения правила Modus Ponens, то аннотация должна выглядеть как 
 \lit{M.P. $i$, $j$}, обратный порядок номеров не допускается.
 
-Уделите внимание производительности: ваша программа должна проверять доказательство в 
-50000 выражений (общим объемом $1$Мб) на Intel Core i5-2520M ($2.5$ GHz) за несколько секунд.
+\subsubsection*{Ограничения}
+Количество строк в файле не превосходит $52000$. 
+\newline
+Размер файла не превосходит $10$ мегабайт.
+
+\subsubsection*{Пример 1:}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Входной файл:}
+\begin{verbatim}
+A,B|-A&B
+A
+B
+A->B->A&B
+B->A&B
+A&B
+\end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Выходной файл:}
+\begin{verbatim}
+(1) A (Предп. 1)
+(2) B (Предп. 2)
+(3) (A->(B->(A&B))) (Сх. акс. 3)
+(4) (B->(A&B)) (M.P. 3, 1)
+(5) (A&B) (M.P. 4, 2)
+\end{verbatim}
+\end{minipage}
+
+\subsubsection*{Пример 2:}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Входной файл:}
+\begin{verbatim}
+A,B|-A&B
+A
+B
+(A->(B->(A&B)))
+(B->(A&B))
+(A->A)
+(A&B)
+\end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Выходной файл:}
+\begin{verbatim}
+(1) A (Предп. 1)
+(2) B (Предп. 2)
+(3) (A->(B->(A&B))) (Сх. акс. 3)
+(4) (B->(A&B)) (M.P. 3, 1)
+(5) (A->A) (Не доказано)
+(6) (A&B) (M.P. 4, 2)
+\end{verbatim}
+\end{minipage}
+
+\subsubsection*{Пример 3:}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Входной файл:}
+\begin{verbatim}
+|-A->A
+(A->A->A)->(A->(A->A)->A)->(A->A)
+(A->A->A)
+(A->(A->A)->A)
+(A->(A->A)->A)->(A->A)
+A->A
+\end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Выходной файл:}
+\begin{verbatim}
+(1) (A->A->A)->(A->(A->A)->A)->A->A (Сх. акс. 2)
+(2) A->A->A (Сх. акс. 1)
+(3) A->(A->A)->A (Сх. акс. 1)
+(4) (A->(A->A)->A)->A->A (M.P. 1, 2)
+(5) A->A (M.P. 4, 3)
+\end{verbatim}
+\end{minipage}
+
 
 
 \end{document}

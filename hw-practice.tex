@@ -44,7 +44,7 @@
 \ntm{отрицание} &::=& (\lit{A} \dots \lit{Z}) \{\lit{A}\dots\lit{Z}|\lit{0}\dots\lit{9}\}^* | \lit{!} \ntm{отрицание} | \lit{(} \ntm{выражение} \lit{)}
 \end{eqnarray*}\end{bnf}%
 
-Пробелы, символы табуляции и возврата каретки (ASCII-код $13_{10}$) должны игнорироваться. 
+Пробелы, символы табуляции и переноса строки должны игнорироваться.
 Символ `\texttt{|}' имеет ASCII-код $124_{10}$.
 
 Написать программу, разбирающую выражение и строящую его дерево разбора, и
@@ -180,6 +180,23 @@ A->A
 \end{verbatim}
 \end{minipage}
 
-
+\subsubsection*{Пример 4:}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Входной файл:}
+\begin{verbatim}
+|-B
+A->B
+A
+B
+\end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Выходной файл:}
+\begin{verbatim}
+(1) (A->B) (Не доказано)
+(2) A (Не доказано)
+(3) B (M.P. 1, 2)
+\end{verbatim}
+\end{minipage}
 
 \end{document}

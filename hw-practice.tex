@@ -4,6 +4,7 @@
 \usepackage{amssymb}
 %\usepackage{amsmath}
 %\usepackage{mathabx}
+\usepackage{stmaryrd}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
 \usepackage{bnf}
 \newcommand{\lit}[1]{\mbox{`\texttt{#1}'}}
@@ -180,6 +181,73 @@ A->A
 \end{verbatim}
 \end{minipage}
 
+
+\subsection*{Задача 2. Теорема о дедукции}
+{\it Стоимость: 4 баллов, решение на Ocaml или Haskell: 6 баллов }\vspace{2mm}\\
+Написать программу, преобразующую вывод $\Gamma, \alpha \vdash \beta$ в вывод
+$\Gamma \vdash \alpha \rightarrow \beta$.
+Входной файл удовлетворяет грамматике из предыдущего задания,
+в заголовке обязательно должно присутствовать как минимум одно предположение.
+
+Результатом работы программы должен быть текст, содержащий преобразованный вывод.
+Формат выходного файла совпадает с форматом входного файла.
+Вы можете предполагать, что входной файл содержит корректный вывод требуемой формулы.
+
+\subsection*{Задача 3. Теорема о полноте исчисления высказываний}
+{\it Стоимость: 10 баллов, решение на Ocaml или Haskell: 13 баллов }\vspace{2mm}\\
+
+Будем называть формулу классического исчисления высказываний $\phi$ 
+\emph{логическим следствием} формул $\gamma_1, \dots, \gamma_n$ (и записывать это как 
+$\gamma_1, \dots, \gamma_n \models \phi$), если для любой оценки пропозициональных 
+переменных $M$, такой, что $\llbracket\gamma_k\rrbracket_M = \mbox{И}$, выполнено
+$\llbracket\phi\rrbracket_M = \mbox{И}$. Иными словами, формула $\phi$ истинна
+всегда, когда истинны все $\gamma_k$.
+
+Написать программу, проверяющую $\gamma_1, \dots, \gamma_n \models \phi$ и строящую
+доказательство $\gamma_1, \dots, \gamma_n \vdash \phi$ в случае успешной проверки,
+либо строящую контрпример в случае неуспеха.
+
+Входной файл состоит из единственной строки:
+\begin{bnf}\begin{eqnarray*}
+[\{\ntm{выражение}\lit{,}\}^*\ntm{выражение}]\lit{|=}\ntm{выражение}
+\end{eqnarray*}\end{bnf}%
+Выходной файл должен либо содержать доказательство высказывания (в формате входного файла из 
+первого задания), либо содержать фразу, удовлетворяющую грамматике:
+\begin{bnf}\begin{eqnarray*}
+\ntm{строка} &::=& \lit{Высказывание ложно при } ~\ntm{назначение} \{\lit{,} \ntm{назначение} \}^*\\
+\ntm{назначение} &::=& \ntm{переменная} \lit{=} (\lit{И}|\lit{Л})
+\end{eqnarray*}\end{bnf}%
+
+\subsubsection*{Пример 1:}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Входной файл:}
+\begin{verbatim}
+|=!A&!B
+\end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Выходной файл:}
+\begin{verbatim}
+Высказывание ложно при A=И, B=Л
+\end{verbatim}
+\end{minipage}
+
+\subsubsection*{Пример 2:}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Входной файл:}
+\begin{verbatim}
+B,W|=A->B
+\end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Выходной файл:}
+\begin{verbatim}
+B,W|-A->B
+B->A->B
+B
+A->B
+\end{verbatim}
+\end{minipage}
 
 
 \end{document}

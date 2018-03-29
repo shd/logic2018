@@ -2,10 +2,14 @@
 ==========================
 ## Материалы
 + [Конспект](https://github.com/shd/logic2018/blob/master/conspect.pdf)
+
 + [Теоретические домашние задания](https://github.com/shd/logic2018/blob/master/hw-theory.pdf)
+
 + [Практические домашние задания](https://github.com/shd/logic2018/blob/master/hw-practice.pdf)
 + [Репозиторий: описание и образцы решения 0-й практической задачи](https://github.com/itegulov/hw0-reference-solutions)
 + [Краткая инструкция по утилите make](https://github.com/shd/logic2018/blob/master/make.pdf)
+
++ [Текущая таблица результатов](https://docs.google.com/spreadsheets/d/1bKqIwqPvx7SMMzwIrkA_f4dwiBX3h_Lt-mGNUQ0zFjE/edit?usp=drivesdk)
 
 ## Лекция 1
 ### Введение издалека: общая топология

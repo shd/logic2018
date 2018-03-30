@@ -70,6 +70,7 @@ P->!QQ->!R10&S|!T&U&V
 \end{verbatim}
 
 \subsection*{Задача 1. Проверка вывода}
+{\it \textbf{ДЕДЛАЙН:} 23:59, 8 апреля }\vspace{2mm}\\
 {\it Стоимость: 7 баллов, решение на Ocaml или Haskell: 9 баллов }\vspace{2mm}\\
 
 Написать программу, проверяющую вывод $\gamma_1, \dots \gamma_n \vdash \alpha$ в исчислении 
@@ -87,7 +88,7 @@ P->!QQ->!R10&S|!T&U&V
 Символ `\texttt{|}' имеет ASCII-код $124_{10}$.
 
 Результатом работы программы должен быть файл с проаннотированным текстом доказательства,
-в котором первая строка --- это заголовок из входного файла, каждая же последующая строка ---
+где каждая строка ---
 соответствующая строка из вывода, расширенная в соответствии с грамматикой:
 \begin{bnf}\begin{eqnarray*}
 \ntm{строка} &::=& \lit{(} \ntm{номер} \lit{) } \ntm{выражение} \lit{ (} \ntm{аннотация} \lit{)}\\
@@ -201,6 +202,7 @@ B
 \end{minipage}
 
 \subsection*{Задача 2. Теорема о дедукции}
+{\it \textbf{ДЕДЛАЙН:} 23:59, 15 апреля }\vspace{2mm}\\
 {\it Стоимость: 4 балла, решение на Ocaml или Haskell: 6 баллов }\vspace{2mm}\\
 Написать программу, преобразующую вывод $\Gamma, \alpha \vdash \beta$ в вывод
 $\Gamma \vdash \alpha \rightarrow \beta$.
@@ -210,6 +212,43 @@ $\Gamma \vdash \alpha \rightarrow \beta$.
 Результатом работы программы должен быть текст, содержащий преобразованный вывод.
 Формат выходного файла совпадает с форматом входного файла.
 Вы можете предполагать, что входной файл содержит корректный вывод требуемой формулы.
+
+\subsubsection*{Пример 1:}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Входной файл:}
+\begin{verbatim}
+A,A|-A
+A
+\end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Выходной файл:}
+\begin{verbatim}
+A|-A->A
+A->A->A
+A
+A->A
+\end{verbatim}
+\end{minipage}
+
+\subsubsection*{Пример 2:}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Входной файл:}
+\begin{verbatim}
+A|-B->A
+A->B->A
+A
+B->A
+\end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Выходной файл:}
+\begin{verbatim}
+|-A->B->A
+A->B->A
+\end{verbatim}
+\end{minipage}
+
 
 \subsection*{Задача 3. Теорема о полноте исчисления высказываний}
 {\it Стоимость: 10 баллов, решение на Ocaml или Haskell: 13 баллов }\vspace{2mm}\\

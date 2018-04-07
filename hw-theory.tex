@@ -258,4 +258,40 @@ $\forall x.\exists y.\phi$, $\exists x.\forall y.\phi$, $\exists x.\exists y.\ph
 
 \end{enumerate}
 
+\section*{Домашнее задание №7: Теорема Гёделя о полноте (скромная часть)}
+
+Для доказательства теоремы Гёделя о полноте нам потребуется для произвольной формулы $F$ уметь находить такую формулу $G$, что  $F \vdash G$, и в $G$ все кванторы находятся снаружи, т.е. например $\forall x\exists z\forall y (P(x, f(y)) \rightarrow H(z, g(x, y, z)))$ --- подходящий нам вид. Приведение к такому виду мы будем делать в три этапа.
+\begin{enumerate}
+	\item На первом этапе выкинем все импликации, для этого докажем следующую лемму:
+    \begin {enumerate}
+		\item $\phi \rightarrow \psi \vdash \neg \phi \vee \psi$
+    \end{enumerate}
+q
+    \item На втором этапе научимся строить доказательство $F \vdash F'$, где в $F'$ знак отрицания может находиться только непосредственно перед предикатом. Здесь нам потребуется доказать следующую парочку лемм:
+  \begin{enumerate}
+      \item $\neg(\phi \vee \psi) \vdash (\neg \phi) \wedge (\neg \psi)$
+      \item $\neg(\phi \wedge \psi) \vdash (\neg \phi) \vee (\neg \psi)$
+      \item $\neg\neg \phi \vdash \phi$
+      \item $\neg(\exists x.\phi) \vdash \forall x.\neg\phi$
+      \item $\neg(\forall x.\phi) \vdash \exists x.\neg\phi$
+  \end{enumerate}
+
+  \item На последнем этапе вынесем кванторы наружу. Для этого нам потребуется ещё несколько лемм.
+  \textit{Замечание: здесь мы считаем, что если переменная $x$ под квантором, то она не входит свободно во вторую часть формулы. Например: если формула имеет вид $(\forall x.\phi) \vee \psi$, то мы всегда можем преобразовать её в формулу $(\forall y.\phi[x:=y]) \vee \psi$, где $y$ не входит свободно в $\psi$}
+  \begin{enumerate}
+      \item $(\exists x.\phi) \vee \psi \vdash \exists x.(\phi \vee \psi)$
+      \item $(\forall x.\phi) \vee \psi \vdash \forall x.(\phi \vee \psi)$
+      \item $(\exists x.\phi) \wedge \psi \vdash \exists x.(\phi \wedge \psi)$
+      \item $(\forall x.\phi) \wedge \psi \vdash \forall x.(\phi \wedge \psi)$
+
+      \item $\phi \vee (\exists x.\psi) \vdash \exists x.(\phi \vee \psi)$
+      \item $\phi \vee (\forall x.\psi) \vdash \forall x.(\phi \vee \psi)$
+      \item $\phi \wedge (\exists x.\psi) \vdash \exists x.(\phi \wedge \psi)$q
+      \item $\phi \wedge (\forall x.\psi) \vdash \forall x.(\phi \wedge \psi)$
+  \end{enumerate}
+
+
+\end{enumerate}
+
+
 \end{document}

@@ -305,4 +305,37 @@ q
 $a+1=a'$, $\exists x.a+x=a$, $\neg\exists x.1+x=0$.
 \end{enumerate}
 
+\section*{Домашнее задание №9: Формальная арифметика, гёделева нумерация}
+
+\begin{enumerate}
+
+\item
+Пусть $a \le b$ обозначает $\exists c.a+c = b$. Тогда в формальной арифметике докажите следующие формулы:
+\begin{enumerate}
+\item $a=b \rightarrow a+c=b+c$
+\item $s = r \rightarrow t \cdot s = t \cdot r$
+\item $a=c \rightarrow a \le c$
+\item $a \le c \rightarrow a \le c'$
+\item $a=b \& c=0 \rightarrow a+c=b+0$
+\item $a=b \& c=\overline{1} \rightarrow a+c=b+\overline{1}$
+\item $a=b \& c=d \rightarrow a+c=b+d$
+\item $s + t = r + t \rightarrow s = r$
+\item $t+s=0 \rightarrow t = 0 \& s = 0$
+\item $t+s=\overline{1} \rightarrow (t=0 \& s=\overline{1}) \vee (t=\overline{1} \& s = 0)$
+\item $(\neg t = 0) \rightarrow (s \cdot t = 0 \rightarrow s = 0)$
+\end{enumerate}
+
+\item Напишите рекурсивную функцию \verb!Pair!, строящую по двум числам $a$ и $b$ их упорядоченную 
+пару $2^a \cdot 3^b$.
+
+\item Напишите рекурсивную функцию, берущую первый и второй элемент упорядоченной пары:
+$fst(2^a \cdot 3^b) = a$, $snd(2^a \cdot 3^b) = b$.
+
+\item Напишите рекурсивную функцию \verb!Num!, строящую по натуральному числу $n$ гёделев номер
+его записи в формальной арифметике ($\ulcorner\overline{n}\urcorner$).
+
+\item Напишите рекурсивную функцию, вычисляющую длину строчки по её гёделеву номеру.
+
+\end{enumerate}
+
 \end{document}

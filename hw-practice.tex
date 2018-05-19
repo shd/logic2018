@@ -369,9 +369,61 @@ A->B
 \end{minipage}
 
 
-%\subsection*{Задача 5. Нетабличность ИИВ}
+\subsection*{Задача 5. Опровержение формулы ИИВ}
+{\it \textbf{ДЕДЛАЙН:} 23:59, 20 июня }\vspace{2mm}\\
+{\it Стоимость: 12 баллов, решение на Ocaml или Haskell: 15 баллов }\vspace{2mm}\\
 
-%По алгебре Гейтинга, заданной в формате из условия задачи 4,
-%требуется построить истинную в данной алгебре, но недоказуемую формулу ИИВ.
+На вход программе дана формула ИИВ. Требуется построить либо
+алгебру Гейтинга, опровергающую формулу, либо указать, что формула общезначима.
+
+Формат входного файла --- аналогично задаче 3.
+Формат выходного файла:
+
+\begin{bnf}\begin{eqnarray*}
+\ntm{выходной файл} &::=& \ntm{задание графа}\lit{\textbackslash n}\ntm{переменные}\\
+                    &|& \lit{Формула общезначима}\\
+\ntm{переменные}    &::=& \ntm{имя переменной}\lit{=}\ntm{номер вершины} [ \lit{,}\ntm{переменные} ]
+\end{eqnarray*}\end{bnf}
+
+Формат задания графа соответствует формату из входного файла в задаче 4.
+
+\begin{verbatim}
+Формула общезначима
+\end{verbatim}
+
+\subsubsection*{Ограничения}
+Входная формула имеет не более трёх переменных.
+
+\subsubsection*{Пример 1:}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Входной файл:}
+\begin{verbatim}
+A|!A
+\end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Выходной файл:}
+\begin{verbatim}
+3
+1
+1 2
+1 2 3
+A=2
+\end{verbatim}
+\end{minipage}
+
+\subsubsection*{Пример 2:}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Входной файл:}
+\begin{verbatim}
+A->A
+\end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+\subsubsection*{Выходной файл:}
+\begin{verbatim}
+Формула общезначима
+\end{verbatim}
+\end{minipage}
 
 \end{document}

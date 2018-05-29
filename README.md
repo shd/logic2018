@@ -2,6 +2,7 @@
 ==========================
 ## Материалы
 + [Конспект](https://github.com/shd/logic2018/blob/master/conspect.pdf)
++ [Вопросы к теоретическому зачёту](https://github.com/shd/logic2018/blob/master/questions.pdf)
 
 + [Теоретические домашние задания](https://github.com/shd/logic2018/blob/master/hw-theory.pdf)
 
